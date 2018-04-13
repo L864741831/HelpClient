@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#55000000"
+    android:gravity="bottom"
+    android:orientation="vertical">
+
+    <LinearLayout
+
+        android:orientation="vertical"
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="250dp">
+        <RelativeLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="46dp">
+            <ImageView
+                android:scaleType="centerInside"
+                android:id="@+id/iv_close"
+                android:layout_marginLeft="@dimen/dimen_10_dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_card_cancle"
+                android:layout_width="52dp"
+                android:layout_height="52dp" />
+            <TextView
+                android:textSize="18sp"
+                android:textColor="#040203"
+                android:layout_centerInParent="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="选择充值方式"/>
+        </RelativeLayout>
+        <TextView
+            android:background="#e1e1e1"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp" />
+        <RelativeLayout
+            android:id="@+id/rl_weixin"
+            android:layout_width="match_parent"
+            android:layout_height="60dp">
+            <ImageView
+                android:layout_marginLeft="@dimen/dimen_15_dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_weixin"
+                android:layout_width="@dimen/dimen_26_dp"
+                android:layout_height="@dimen/dimen_24_dp" />
+            <LinearLayout
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="52dp"
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:text="微信支付"
+                    android:textColor="#333333"
+                    android:textSize="16dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:text="微信单笔限额20000元"
+                    android:textColor="#767676"
+                    android:textSize="13.5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+            <ImageView
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/dimen_17_dp"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/ic_xiao_next"
+                android:layout_width="7dp"
+                android:layout_height="12dp" />
+        </RelativeLayout>
+        <TextView
+            android:layout_marginLeft="52dp"
+            android:background="#e1e1e1"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp" />
+        <RelativeLayout
+            android:id="@+id/rl_zhifubao"
+            android:layout_width="match_parent"
+            android:layout_height="60dp">
+            <ImageView
+                android:layout_marginLeft="@dimen/dimen_15_dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_zhifubao"
+                android:layout_width="@dimen/dimen_26_dp"
+                android:layout_height="@dimen/dimen_24_dp" />
+            <LinearLayout
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="52dp"
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:text="支付宝支付"
+                    android:textColor="#333333"
+                    android:textSize="16dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:text="支付宝单笔限额20000元"
+                    android:textColor="#767676"
+                    android:textSize="13.5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+            <ImageView
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/dimen_17_dp"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/ic_xiao_next"
+                android:layout_width="7dp"
+                android:layout_height="12dp" />
+        </RelativeLayout>
+        <TextView
+            android:layout_marginLeft="52dp"
+            android:background="#e1e1e1"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp" />
+    </LinearLayout>
+
+
+
+</LinearLayout>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/main_di"
+    tools:context="com.tianjistar.help.activity.persion.HelpRecoderActivity">
+    <include layout="@layout/top_bar_commom"></include>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_1_dp"
+        android:background="#e1e1e1"/>
+    <android.support.design.widget.TabLayout
+        app:tabBackground="@color/white"
+        app:tabTextAppearance="@style/TabLayoutTextStyle"
+        android:id="@+id/tb_layout"
+        app:tabMode="fixed"
+        app:tabGravity="center"
+        android:background="#ffffff"
+        android:layout_width="match_parent"
+        android:layout_height="42dp"></android.support.design.widget.TabLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_1_dp"
+        android:background="#e1e1e1"/>
+    <android.support.v4.view.ViewPager
+        android:layout_marginTop="@dimen/dimen_10_dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/vp">
+
+    </android.support.v4.view.ViewPager>
+</LinearLayout>

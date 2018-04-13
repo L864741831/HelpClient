@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:background="#B3000000"
+    >
+    <RelativeLayout
+        android:layout_centerInParent="true"
+        android:layout_marginRight="27.5dp"
+        android:layout_marginLeft="27.5dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="369dp"
+        android:background="@drawable/detail_salf">
+
+
+        <TextView
+            android:id="@+id/tv_vt"
+            android:layout_marginRight="@dimen/dimen_18_dp"
+            android:layout_marginLeft="@dimen/dimen_18_dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="@dimen/dimen_44_dp"
+            android:background="#e1e1e1"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_1_dp" />
+        <TextView
+            android:gravity="center"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/item_know"
+            android:layout_alignParentBottom="true"
+            android:text="我知道了"
+            android:textSize="16sp"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:textColor="@color/main_color"/>
+        <com.tianjistar.help.view.MyRecyclerView
+            android:layout_above="@+id/tv_vt"
+            android:id="@+id/rv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </com.tianjistar.help.view.MyRecyclerView>
+    </RelativeLayout>
+
+
+</RelativeLayout>

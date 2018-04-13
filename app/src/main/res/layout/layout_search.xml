@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:id="@+id/lin_search"
+    android:layout_height="wrap_content">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="27dp"
+        android:background="@drawable/bg_search"
+        android:layout_marginRight="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="9dp"
+        android:layout_marginBottom="9dp"
+        >
+        <io.rong.recognizer.widget.ClearEditText
+            android:id="@+id/et_search"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginRight="16px"
+            android:drawableLeft="@drawable/icon_search"
+            android:drawablePadding="8dp"
+            android:imeOptions="actionSearch"
+            android:maxLength="11"
+            android:hint="搜一搜"
+            android:paddingLeft="30px"
+            android:paddingRight="15px"
+            android:singleLine="true"
+            android:textSize="12sp"
+            android:textColor="@color/text_black"
+            android:textColorHint="#ffffff"
+            android:textCursorDrawable="@drawable/color_cursor"
+            android:background="@null"
+            android:layout_centerInParent="true"
+            />
+    </RelativeLayout>
+</LinearLayout>

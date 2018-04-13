@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:background="@color/main_di"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:background="#ffffff"
+        android:textSize="17sp"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:textColor="#333333"
+        android:text="个人中心"
+        android:layout_width="match_parent"
+        android:layout_height="52dp" />
+    <TextView
+        android:background="#e1e1e1"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp" />
+   <ScrollView
+       android:scrollbars="none"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent">
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:orientation="vertical">
+           <RelativeLayout
+               android:id="@+id/rl_head"
+               android:orientation="horizontal"
+               android:background="#ffffff"
+               android:layout_width="match_parent"
+               android:layout_height="103dp">
+               <de.hdodenhof.circleimageview.CircleImageView
+                   android:id="@+id/iv_persion_head"
+                   android:src="@drawable/ic_head_defout"
+                   android:layout_gravity="center_vertical"
+                   android:layout_marginLeft="20dp"
+                   android:layout_width="68dp"
+                   android:layout_height="68dp"
+                   android:layout_alignTop="@+id/linearLayout"
+                   android:layout_alignParentLeft="true"
+                   android:layout_alignParentStart="true"
+                   android:layout_marginStart="20dp" />
+               <LinearLayout
+
+                   android:layout_centerVertical="true"
+                   android:layout_toRightOf="@+id/iv_persion_head"
+                   android:layout_marginLeft="@dimen/dimen_20_dp"
+                   android:layout_gravity="center_vertical"
+                   android:orientation="vertical"
+                   android:background="#ffffff"
+                   android:layout_width="wrap_content"
+                   android:layout_height="68dp"
+                   android:id="@+id/linearLayout">
+                   <TextView
+                       android:layout_marginTop="@dimen/dimen_10_dp"
+                       android:gravity="center_vertical"
+                       android:layout_gravity="center_vertical"
+                       android:id="@+id/tv_persion_name"
+                       android:textColor="#000000"
+                       android:textSize="17sp"
+                       android:text="用户"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content" />
+                   <TextView
+                       android:gravity="center_vertical"
+                       android:layout_gravity="center_vertical"
+                       android:paddingTop="@dimen/dimen_14_dp"
+                       android:id="@+id/tv_persion_info"
+                       android:textColor="#666666"
+                       android:textSize="13sp"
+                       android:text="查看或编辑个人信息"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content" />
+               </LinearLayout>
+               <ImageView
+                   android:id="@+id/iv_persion_share"
+                   android:scaleType="center"
+                   android:adjustViewBounds="true"
+                   android:layout_marginRight="@dimen/dimen_30_dp"
+                   android:layout_centerVertical="true"
+                   android:layout_alignParentRight="true"
+                   android:layout_width="52dp"
+                   android:layout_height="52dp"
+                   android:layout_gravity="left"
+                   android:src="@drawable/ic_share" />
+           </RelativeLayout>
+           <RelativeLayout
+               android:id="@+id/rl_persion_money"
+               android:layout_width="match_parent"
+               android:layout_height="51dp"
+               android:layout_marginTop="@dimen/dimen_10_dp"
+               android:background="@color/white">
+               <ImageView
+                   android:id="@+id/iv_1"
+                   android:layout_width="55dp"
+                   android:layout_height="55dp"
+                   android:adjustViewBounds="true"
+                   android:scaleType="center"
+                   android:src="@drawable/ic_money" />
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_centerVertical="true"
+                   android:layout_toRightOf="@+id/iv_1"
+                   android:text="我的钱包"
+                   android:textColor="#030303"
+                   android:textSize="15sp" />
+               <ImageView
+                   android:layout_alignParentRight="true"
+                   android:layout_centerVertical="true"
+                   android:adjustViewBounds="true"
+                   android:scaleType="center"
+                   android:src="@drawable/ic_persion_next"
+                   android:layout_width="52dp"
+                   android:layout_height="52dp" />
+           </RelativeLayout>
+           <RelativeLayout
+               android:id="@+id/rl_persion_helpcard"
+               android:layout_width="match_parent"
+               android:layout_height="51dp"
+               android:layout_marginTop="@dimen/dimen_10_dp"
+               android:background="@color/white">
+               <ImageView
+                   android:id="@+id/iv_2"
+                   android:layout_width="55dp"
+                   android:layout_height="55dp"
+                   android:adjustViewBounds="true"
+                   android:scaleType="center"
+                   android:src="@drawable/ic_help_card" />
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_centerVertical="true"
+                   android:layout_toRightOf="@+id/iv_2"
+                   android:text="救援卡"
+                   android:textColor="#030303"
+                   android:textSize="15sp" />
+               <TextView
+                   android:visibility="gone"
+                   android:id="@+id/tv_persion_protect"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_centerVertical="true"
+                   android:layout_alignParentRight="true"
+                   android:layout_marginRight="36dp"
+                   android:text="保障中"
+                   android:textColor="#666666"
+                   android:textSize="13sp" />
+               <ImageView
+                   android:layout_alignParentRight="true"
+                   android:layout_centerVertical="true"
+                   android:adjustViewBounds="true"
+                   android:scaleType="center"
+                   android:src="@drawable/ic_persion_next"
+                   android:layout_width="52dp"
+                   android:layout_height="52dp" />
+           </RelativeLayout>
+           <TextView
+               android:background="#e1e1e1"
+               android:layout_width="match_parent"
+               android:layout_height="0.5dp" />
+           <RelativeLayout
+               android:id="@+id/rl_persion_helprecoder"
+               android:layout_width="match_parent"
+               android:layout_height="51dp"
+               android:background="@color/white">
+               <ImageView
+                   android:id="@+id/iv_3"
+                   android:layout_width="55dp"
+                   android:layout_height="55dp"
+                   android:adjustViewBounds="true"
+                   android:scaleType="center"
+                   android:src="@drawable/ic_help_recoder" />
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_centerVertical="true"
+                   android:layout_toRightOf="@+id/iv_3"
+                   android:text="救援记录"
+                   android:textColor="#030303"
+                   android:textSize="15sp" />
+               <ImageView
+                   android:layout_alignParentRight="true"
+                   android:layout_centerVertical="true"
+                   android:adjustViewBounds="true"
+                   android:scaleType="center"
+                   android:src="@drawable/ic_persion_next"
+                   android:layout_width="52dp"
+                   android:layout_height="52dp" />
+           </RelativeLayout>
+           <TextView
+               android:background="#e1e1e1"
+               android:layout_width="match_parent"
+               android:layout_height="0.5dp" />
+           <RelativeLayout
+               android:id="@+id/rl_persion_safecard"
+               android:layout_width="match_parent"
+               android:layout_height="51dp"
+               android:background="@color/white">
+               <ImageView
+                   android:id="@+id/iv_4"
+                   android:layout_width="55dp"
+                   android:layout_height="55dp"
+                   android:adjustViewBounds="true"
+                   android:scaleType="center"
+                   android:src="@drawable/ic_safe_recoder" />
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_centerVertical="true"
+                   android:layout_toRightOf="@+id/iv_4"
+                   android:text="保险记录"
+                   android:textColor="#030303"
+                   android:textSize="15sp" />
+               <ImageView
+                   android:layout_alignParentRight="true"
+                   android:layout_centerVertical="true"
+                   android:adjustViewBounds="true"
+                   android:scaleType="center"
+                   android:src="@drawable/ic_persion_next"
+                   android:layout_width="52dp"
+                   android:layout_height="52dp" />
+           </RelativeLayout>
+           <TextView
+               android:background="#e1e1e1"
+               android:layout_width="match_parent"
+               android:layout_height="0.5dp" />
+           <RelativeLayout
+               android:id="@+id/rl_persion_message"
+               android:layout_width="match_parent"
+               android:layout_height="51dp"
+               android:background="@color/white">
+               <ImageView
+                   android:id="@+id/iv_5"
+                   android:layout_width="55dp"
+                   android:layout_height="55dp"
+                   android:adjustViewBounds="true"
+                   android:scaleType="center"
+                   android:src="@drawable/ic_message" />
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_centerVertical="true"
+                   android:layout_toRightOf="@+id/iv_5"
+                   android:text="我的消息"
+                   android:textColor="#030303"
+                   android:textSize="15sp" />
+               <ImageView
+                   android:layout_alignParentRight="true"
+                   android:layout_centerVertical="true"
+                   android:adjustViewBounds="true"
+                   android:scaleType="center"
+                   android:src="@drawable/ic_persion_next"
+                   android:layout_width="52dp"
+                   android:layout_height="52dp" />
+           </RelativeLayout>
+           <RelativeLayout
+               android:layout_marginTop="@dimen/dimen_10_dp"
+               android:id="@+id/rl_persion_set"
+               android:layout_width="match_parent"
+               android:layout_height="51dp"
+               android:background="@color/white">
+               <ImageView
+                   android:id="@+id/iv_6"
+                   android:layout_width="55dp"
+                   android:layout_height="55dp"
+                   android:adjustViewBounds="true"
+                   android:scaleType="center"
+                   android:src="@drawable/ic_set" />
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_centerVertical="true"
+                   android:layout_toRightOf="@+id/iv_6"
+                   android:text="设置"
+                   android:textColor="#030303"
+                   android:textSize="15sp" />
+               <ImageView
+                   android:layout_alignParentRight="true"
+                   android:layout_centerVertical="true"
+                   android:adjustViewBounds="true"
+                   android:scaleType="center"
+                   android:src="@drawable/ic_persion_next"
+                   android:layout_width="52dp"
+                   android:layout_height="52dp" />
+           </RelativeLayout>
+       </LinearLayout>
+   </ScrollView>
+
+
+
+</LinearLayout>

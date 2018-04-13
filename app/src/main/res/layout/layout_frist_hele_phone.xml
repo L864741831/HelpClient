@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="139dp">
+    <ImageView
+        android:id="@+id/iv_xian1"
+        android:scaleType="fitXY"
+        android:layout_alignParentBottom="true"
+        android:src="@drawable/ic_first_bg"
+        android:layout_width="match_parent"
+        android:layout_height="139dp" />
+    <TextView
+        android:id="@+id/tv_frist_xian1"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="71.5dp"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/frist_xian"
+        android:layout_width="36dp"
+        android:layout_height="4dp" />
+    <RelativeLayout
+        android:id="@+id/rl_feist_on_help"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="7.5dp"
+        android:background="@drawable/add_card_next"
+        android:layout_marginRight="7.5dp"
+        android:layout_marginLeft="7.5dp"
+        android:layout_width="match_parent"
+        android:layout_height="49dp" >
+        <TextView
+            android:drawableLeft="@drawable/ic_frist_one_help"
+            android:layout_centerInParent="true"
+            android:text="一键呼救"
+            android:drawablePadding="@dimen/dimen_10_dp"
+            android:textSize="17sp"
+            android:textColor="#ffffff"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+</RelativeLayout>
+</RelativeLayout>

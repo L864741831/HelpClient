@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">天佑救援</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="rationale_location">请在设置中允许本应用使用相机权限</string>
+    <string name="rationale_locationBaiDu">请在设置中允许本应用使用地理位置权限</string>
+    <string name="tip_permission_sdcard">请在设置中允许本应用使用SD卡的权限</string>
+    <string-array name="tab_title">
+        <item>全部</item>
+        <item>接单</item>
+        <item>施救</item>
+        <item>已完成</item>
+        <item>已取消</item>
+    </string-array>
+    <string-array name="tab_title1">
+        <item>担保中</item>
+        <item>历史保单</item>
+
+    </string-array>
+    <string-array name="tab_title2">
+        <item>急救小常识</item>
+        <item>系统公告</item>
+
+    </string-array>
+</resources>

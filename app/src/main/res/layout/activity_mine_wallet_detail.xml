@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main_di"
+    android:orientation="vertical"
+    tools:context="com.tianjistar.help.activity.persion.MineWalletDetailActivity">
+    <include layout="@layout/top_bar_commom"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_1_dp"
+        android:background="#e1e1e1"/>
+    <in.srain.cube.views.ptr.PtrClassicFrameLayout
+        android:id="@+id/pcfl"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+        <android.support.v7.widget.RecyclerView
+            android:layout_marginTop="@dimen/dimen_14_dp"
+            android:id="@+id/rv_wishes_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        </android.support.v7.widget.RecyclerView>
+    </in.srain.cube.views.ptr.PtrClassicFrameLayout>
+</LinearLayout>

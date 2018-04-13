@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@color/main_di"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.tianjistar.help.activity.persion.MineSetActivity">
+    <include layout="@layout/top_bar_commom"></include>
+    <include layout="@layout/top_xian"></include>
+    <RelativeLayout
+        android:id="@+id/rl_updata_pwd"
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="51dp">
+        <TextView
+            android:textSize="15sp"
+            android:layout_marginLeft="@dimen/dimen_15_dp"
+            android:layout_centerVertical="true"
+            android:textColor="#030303"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="修改密码"/>
+        <ImageView
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:adjustViewBounds="true"
+            android:scaleType="center"
+            android:src="@drawable/ic_persion_next"
+            android:layout_width="52dp"
+            android:layout_height="52dp" />
+    </RelativeLayout>
+    <TextView
+        android:background="#e1e1e1"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp" />
+    <RelativeLayout
+        android:id="@+id/rl_clear"
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="51dp">
+        <TextView
+            android:textSize="15sp"
+            android:layout_marginLeft="@dimen/dimen_15_dp"
+            android:layout_centerVertical="true"
+            android:textColor="#030303"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="清除缓存"/>
+        <TextView
+            android:id="@+id/tv_set_clear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="36dp"
+            android:text="23M"
+            android:textColor="#666666"
+            android:textSize="13sp" />
+        <ImageView
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:adjustViewBounds="true"
+            android:scaleType="center"
+            android:src="@drawable/ic_persion_next"
+            android:layout_width="52dp"
+            android:layout_height="52dp" />
+    </RelativeLayout>
+    <TextView
+        android:background="#e1e1e1"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp" />
+    <RelativeLayout
+        android:id="@+id/rl_about"
+        android:layout_marginTop="@dimen/dimen_10_dp"
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="51dp">
+        <TextView
+            android:textSize="15sp"
+            android:layout_marginLeft="@dimen/dimen_15_dp"
+            android:layout_centerVertical="true"
+            android:textColor="#030303"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="关于天佑"/>
+        <ImageView
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:adjustViewBounds="true"
+            android:scaleType="center"
+            android:src="@drawable/ic_persion_next"
+            android:layout_width="52dp"
+            android:layout_height="52dp" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/rl_exzt"
+        android:layout_marginTop="@dimen/dimen_14_dp"
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="51dp">
+        <TextView
+            android:layout_centerInParent="true"
+            android:textSize="17sp"
+            android:layout_centerVertical="true"
+            android:textColor="#030303"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="退出登录"/>
+
+    </RelativeLayout>
+</LinearLayout>

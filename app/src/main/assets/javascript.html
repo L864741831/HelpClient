@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        // Android需要调用的方法
+        function callJS(){
+            alert("Android调用了JS的callJS()方法");
+        }
+        function showMsgInAndroid() {
+            bridge.showMsg("Js调用Android的方法");
+        }
+
+          function getMessageAndroid() {
+            var s=bridge.getMessage("hello");
+             alert(s);
+        }
+
+
+        function payPriceInAndroid(){
+            bridge.payPrice(100.0);
+        }
+
+
+         function shareAppInAndroid(){
+            bridge.sharApp("appH5链接");
+        }
+
+
+
+        function shareInAndroid(){
+            bridge.shareInAndroid("标题","内容","https://mmbiz.qlogo.cn/mmbiz_png/v4xOHcWSBxgbXKnibttdDzcrpEHfBZW1JKLyz2fDJFUdeHMgtbNjogEp7uibe0wtIibS9XsiaTTa0R8wvVibP0ibFibmQ/0?wx_fmt=png","http://ty.tianjistar.com");
+        }
+
+
+        function startMapInAndroid(){
+            bridge.startMapInAndroid("我的位置","34.771930","113.721200","目的地","34.771550","113.721900");
+        }
+
+
+
+    </script>
+</head>
+<body>
+<span>测试Android和Js互调</span><br>
+<button id="test" onclick="showMsgInAndroid()">Js调用Android的方法</button>
+<br>
+<p>测试Js回调参数</p>
+<button onclick="getMessageAndroid()">Js回调Android的参数</button>
+<br>
+
+<button id="pay" onclick="payPriceInAndroid()">js</button>
+
+<br>
+
+
+<button id="share" onclick="shareAppInAndroid()">分享</button>
+
+<br>
+
+<button id="shareInAndroid" onclick="shareInAndroid()">分享</button>
+
+<br>
+
+
+
+
+<button id="startMapInAndroid" onclick="startMapInAndroid()">地图</button>
+
+<br>
+
+
+</body>
+</html>

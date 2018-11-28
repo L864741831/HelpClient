@@ -1,7 +1,5 @@
 package com.tianjistar.help.activity.persion;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.RelativeLayout;
 
@@ -25,8 +23,7 @@ public class MineMessageActivity extends Base1Activity {
     }
 
     @Override
-    protected void initView() {
-        super.initView();
+    public void initView() {
         setTitle("我的消息");
         relativeLayoutMessage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -35,5 +32,15 @@ public class MineMessageActivity extends Base1Activity {
 
             }
         });
+    }
+
+    @Override
+    public void initData() {
+
+    }
+
+    @Override
+    public void initListener() {
+
     }
 }

@@ -8,6 +8,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.tianjistar.help.utils.SharedPreferencesHelper;
+
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
@@ -26,6 +28,7 @@ public abstract class BaseFragment extends Fragment {
     protected int curpage = 1;// 当前页码
     private View rootView;
 
+    protected SharedPreferencesHelper preferencesHelper;
 
     private static final int REQUEST_CODE_READ_EXTERNAL_STORAGE_PERMISSIONS = 1;
     private static final int REQUEST_CODE_WRITE_EXTERNAL_STORAGE = 2;
@@ -40,19 +43,22 @@ public abstract class BaseFragment extends Fragment {
 //            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
 //            window.setStatusBarColor(getResources().getColor(R.color.theme_color));
 //        }
-   //   StatusBarUtil.StatusBarLightMode(mActivity);
+        //   StatusBarUtil.StatusBarLightMode(mActivity);
         // 注册EventBus
         EventBus.getDefault().register(this);
-
+        preferencesHelper = SharedPreferencesHelper.getInstance();
     }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootView = inflater.inflate(getContentView(), null);
-       // AutoUtils.auto(rootView);// 结合AutoLayout
+        // AutoUtils.auto(rootView);// 结合AutoLayout
         // 绑定butterknife
-      ButterKnife.bind(this, rootView);
+        ButterKnife.bind(this, rootView);
 
         initView();
+        initData();
+        initListener();
         return rootView;
     }
 
@@ -60,15 +66,11 @@ public abstract class BaseFragment extends Fragment {
         return rootView.findViewById(id);
     }
 
-    protected void initView() {
-
-    }
-
     @Override
     public void onDestroyView() {
         super.onDestroyView();
         // 解绑butterknife
-      //  unbinder.unbind();
+        //  unbinder.unbind();
         ButterKnife.unbind(this);
     }
 
@@ -79,6 +81,12 @@ public abstract class BaseFragment extends Fragment {
      */
     public abstract int getContentView();
 
+    public abstract void initView();
+
+    public abstract void initData();
+
+    public abstract void initListener();
+
     @Subscribe
     public void onEventMainThread(String s) {
 
@@ -88,13 +96,13 @@ public abstract class BaseFragment extends Fragment {
     public void onDestroy() {
         // 取消注册EventBus
         EventBus.getDefault().unregister(this);
-      //  PgyCrashManager.unregister();
+        //  PgyCrashManager.unregister();
         super.onDestroy();
     }
 
     @Override
     public void onPause() {
         super.onPause();
-       // PgyCrashManager.unregister();
+        // PgyCrashManager.unregister();
     }
 }

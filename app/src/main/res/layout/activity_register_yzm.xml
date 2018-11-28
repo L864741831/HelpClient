@@ -6,8 +6,9 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="#ffffff"
-   >
-    <include layout="@layout/top_bar_commom"></include>
+    >
+    <include layout="@layout/top_bar_commom"/>
+
     <TextView
         android:layout_marginTop="@dimen/dimen_35_dp"
         android:layout_marginRight="@dimen/dimen_24_dp"
@@ -17,6 +18,7 @@
         android:layout_height="wrap_content"
         android:textSize="23sp"
         android:textColor="#251919"/>
+
     <LinearLayout
         android:layout_marginTop="@dimen/dimen_13_dp"
         android:layout_marginRight="@dimen/dimen_24_dp"
@@ -24,37 +26,46 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
+
         <TextView
             android:textSize="12sp"
             android:textColor="#251919"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="验证码已发送至手机：  "/>
+
         <TextView
             android:id="@+id/tv_regest_phone"
             android:textSize="12sp"
             android:textColor="#f02b2b"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="157****4545"/>
+            android:text="123***123"/>
+
     </LinearLayout>
+
     <com.tianjistar.help.view.VerifyCodeView
         android:id="@+id/vc_code"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="108dp"
         android:layout_marginRight="@dimen/dimen_24_dp"
-        android:layout_marginLeft="@dimen/dimen_24_dp"></com.tianjistar.help.view.VerifyCodeView>
+        android:layout_marginLeft="@dimen/dimen_24_dp">
+    </com.tianjistar.help.view.VerifyCodeView>
+
     <TextView
         android:id="@+id/tv_get_yzm"
-        android:text=""
-        android:textColor="#f02b2b"
-        android:textSize="12sp"
-        android:paddingBottom="@dimen/dimen_14_dp"
-        android:paddingRight="@dimen/dimen_24_dp"
-        android:paddingLeft="@dimen/dimen_24_dp"
-        android:layout_marginTop="@dimen/dimen_14_dp"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:layout_marginLeft="3dp"
+        android:layout_marginTop="3dp"
+        android:text=""
+        android:textColor="@color/black"
+        android:textSize="12dp"
+        />
 
 </LinearLayout>

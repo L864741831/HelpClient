@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/iv_insurance_pic"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:src="@drawable/ic_salf_head"
+        />
+
+    <TextView
+        android:id="@+id/tv_insurance_type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_marginLeft="12dp"
+        android:layout_toRightOf="@+id/iv_insurance_pic"
+        android:text="车辆意外险"
+        android:textSize="13dp"
+        android:textColor="#252525"
+        />
+
+    <TextView
+        android:id="@+id/tv_insur"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/iv_insurance_pic"
+        android:layout_below="@+id/tv_insurance_type"
+        android:paddingTop="15dp"
+        android:layout_marginLeft="12dp"
+        android:text="保障时间"
+        android:textSize="13dp"
+        android:textColor="#252525"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/tv_insur"
+        android:layout_below="@+id/tv_insurance_type"
+        android:paddingTop="15dp"
+        android:layout_marginLeft="12dp"
+        android:text="2018/6/5-2019/6/4"
+        android:textSize="13dp"
+        android:textColor="#838282"
+        />
+
+    <ImageView
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:src="@drawable/ic_salf_protcte"
+        android:layout_marginRight="80dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/ic_salf_detail"
+        android:layout_marginRight="20dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+</RelativeLayout>

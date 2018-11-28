@@ -84,7 +84,9 @@ public class PicassoUtils {
             Picasso.with(context).load(R.drawable.ic_head_defout).into(imageView);
             return;
         }
-        Picasso.with(context).load(url).error(R.drawable.ic_head_defout).into(imageView);
+        Picasso.with(context).load(url)
+                .placeholder(R.drawable.ic_head_defout)
+                .error(R.drawable.ic_head_defout).into(imageView);
         //  Glide.with(context).load(url).error(R.drawable.defaulthead).into(imageView);
     }
 

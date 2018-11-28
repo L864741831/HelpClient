@@ -1,7 +1,5 @@
 package com.tianjistar.help.activity.persion;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -17,7 +15,7 @@ import butterknife.Bind;
 
 /**
  * 忘记支付密码
- * */
+ */
 public class ForgetPayPwdActivity extends Base1Activity {
 
     @Bind(R.id.et_forgetpaypwd_phone)
@@ -35,17 +33,24 @@ public class ForgetPayPwdActivity extends Base1Activity {
     }
 
     @Override
-    protected void initView() {
-        super.initView();
+    public void initView() {
         setTitle("忘记支付密码");
         setListener();
         checkInfo();
     }
 
+    @Override
+    public void initData() {
+    }
+
+    @Override
+    public void initListener() {
+    }
+
     private void checkInfo() {
-        String name=editTextName.getText().toString().trim();
-        String no=editTextNo.getText().toString().trim();
-        String phone=editTextPhone.getText().toString().trim();
+        String name = editTextName.getText().toString().trim();
+        String no = editTextNo.getText().toString().trim();
+        String phone = editTextPhone.getText().toString().trim();
         if (TextUtils.isEmpty(name)){
             MyApplication.showToast("请输入完整的姓名");
             return;
@@ -71,12 +76,10 @@ public class ForgetPayPwdActivity extends Base1Activity {
         editTextPhone.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
             }
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
             }
 
             @Override

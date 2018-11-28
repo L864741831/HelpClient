@@ -3,6 +3,7 @@ package com.tianjistar.help.base;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
@@ -19,6 +20,7 @@ import com.lzy.okgo.OkGo;
 
 import com.tianjistar.help.R;
 import com.tianjistar.help.utils.AbActivityManager;
+import com.tianjistar.help.utils.SharedPreferencesHelper;
 import com.tianjistar.help.utils.StringUtil;
 import com.zhy.autolayout.AutoLayoutActivity;
 
@@ -31,10 +33,11 @@ import butterknife.ButterKnife;
 
 
 public abstract class Base1Activity extends AutoLayoutActivity {
+
     protected Context mContext;
     protected Activity mActivity;
     public String TAG = Base1Activity.class.getSimpleName();
-//    public List<ContactsBean>beanList=new ArrayList<>();
+    //    public List<ContactsBean>beanList=new ArrayList<>();
     protected int screenWidth;// 屏幕宽度
     protected int screenHeight;// 屏幕高度
     protected float density;// 屏幕密度
@@ -42,6 +45,9 @@ public abstract class Base1Activity extends AutoLayoutActivity {
 
     private static final int REQUEST_CODE_READ_EXTERNAL_STORAGE_PERMISSIONS = 1;
     private static final int REQUEST_CODE_WRITE_EXTERNAL_STORAGE = 2;
+
+    protected SharedPreferencesHelper preferencesHelper;
+
     @Override
     public void setContentView(int layoutResID) {
 
@@ -71,6 +77,8 @@ public abstract class Base1Activity extends AutoLayoutActivity {
         // 绑定ButterKnife
         ButterKnife.bind(this);
     }
+
+
     @SuppressLint("ResourceAsColor")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,21 +90,23 @@ public abstract class Base1Activity extends AutoLayoutActivity {
 
         // 注册EventBus
         EventBus.getDefault().register(this);
+
+        preferencesHelper = SharedPreferencesHelper.getInstance();
+
         DisplayMetrics metric = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(metric);
         screenWidth = metric.widthPixels; // 屏幕宽度（像素）
         screenHeight = metric.heightPixels; // 屏幕高度（像素）
         density = metric.density; // 屏幕密度（0.75 / 1.0 / 1.5）
         densityDpi = metric.densityDpi; // 屏幕密度DPI（120 / 160 / 240）
-         setContentView(getContentView());
+
+        setContentView(getContentView());
+
         initView();
+        initData();
+        initListener();
     }
 
-    /**
-     * 初始化布局，子类重写
-     */
-    protected void initView() {
-    }
 
     /**
      * 获取内容布局视图
@@ -104,6 +114,15 @@ public abstract class Base1Activity extends AutoLayoutActivity {
      * @return
      */
     public abstract int getContentView();
+
+    /**
+     * 初始化布局，子类重写
+     */
+    public abstract void initView();
+
+    public abstract void initData();
+
+    public abstract void initListener();
 
     /**
      * 设置状态栏颜色

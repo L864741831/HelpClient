@@ -18,6 +18,7 @@ import android.net.NetworkInfo;
 import android.net.Uri;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
+import android.os.Build;
 import android.provider.Settings;
 import android.telephony.TelephonyManager;
 import android.util.DisplayMetrics;
@@ -861,6 +862,23 @@ public class AppUtil {
         } else {
             return telephonyManager.getDeviceId();
         }
+    }
+
+    public static String getPhoneImei(Context context) {
+        String imeiVaue = "";
+        TelephonyManager manager = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
+        try {
+            if(manager.getDeviceId() == null || manager.getDeviceId().equals("")) {
+                if (Build.VERSION.SDK_INT >= 23) {
+                    imeiVaue = manager.getDeviceId(0);
+                }
+            }else{
+                imeiVaue = manager.getDeviceId();
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return imeiVaue;
     }
 
     /**

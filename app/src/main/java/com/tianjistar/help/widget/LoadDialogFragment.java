@@ -16,8 +16,6 @@ import android.widget.TextView;
 
 import com.tianjistar.help.R;
 
-
-
 /**
  * 进度对话框
  * Author Victor

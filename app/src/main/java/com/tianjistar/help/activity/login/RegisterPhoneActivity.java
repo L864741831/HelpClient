@@ -1,6 +1,5 @@
 package com.tianjistar.help.activity.login;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
@@ -21,25 +20,30 @@ import butterknife.Bind;
  * 注册之输入手机号
  * */
 public class RegisterPhoneActivity extends Base1Activity implements View.OnClickListener {
+
     @Bind(R.id.et_phone)
     ClearEditText ClearEditTextPhone;
     @Bind(R.id.btn_next)
     Button buttonNext;//下一步
     @Bind(R.id.tv_xieyi)
     TextView textViewXieYi;//协议
+
     @Override
     public int getContentView() {
         return R.layout.activity_register_phone;
     }
 
     @Override
-    protected void initView() {
-        super.initView();
+    public void initView() {
         setTitle("注册");
-        setListener();
     }
 
-    private void setListener() {
+    @Override
+    public void initData() {
+    }
+
+    @Override
+    public void initListener() {
         textViewXieYi.setOnClickListener(this);
         buttonNext.setOnClickListener(this);
         ClearEditTextPhone.addTextChangedListener(new TextWatcher() {
@@ -68,7 +72,6 @@ public class RegisterPhoneActivity extends Base1Activity implements View.OnClick
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.tv_xieyi:
-
                 break;
             case R.id.btn_next:
                 final String phone = ClearEditTextPhone.getText().toString().trim();
@@ -85,8 +88,14 @@ public class RegisterPhoneActivity extends Base1Activity implements View.OnClick
                 Bundle bundle=new Bundle();
                 bundle.putString("phone",phone);
                 MyApplication.openActivity(mContext,RegisterYzmActivity.class,bundle);
-                finish();
                 break;
         }
     }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        finish();
+    }
+
 }

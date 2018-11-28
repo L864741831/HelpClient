@@ -4,9 +4,8 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -40,12 +39,21 @@ public class MineAboutActivity extends Base1Activity implements View.OnClickList
     }
 
     @Override
-    protected void initView() {
-        super.initView();
+    public void initView() {
         setTitle("关于天佑");
         textViewVersion.setText("天佑  "+AppUtil.getVersionName(mContext)+"");
         getData();
         setListener();
+    }
+
+    @Override
+    public void initData() {
+
+    }
+
+    @Override
+    public void initListener() {
+
     }
 
     private void getData() {

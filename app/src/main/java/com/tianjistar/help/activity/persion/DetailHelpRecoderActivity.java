@@ -1,8 +1,6 @@
 package com.tianjistar.help.activity.persion;
 
 import android.graphics.drawable.ColorDrawable;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,16 +9,9 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import com.tianjistar.help.R;
-import com.tianjistar.help.api.BaseHttpCallbackListener;
-import com.tianjistar.help.api.Define;
-import com.tianjistar.help.api.Element;
-import com.tianjistar.help.api.MyParams;
-import com.tianjistar.help.api.VictorHttpUtil;
-import com.tianjistar.help.app.AppSpContact;
 import com.tianjistar.help.app.MyApplication;
 import com.tianjistar.help.base.Base1Activity;
 import com.tianjistar.help.utils.DisplayUtil;
-import com.tianjistar.help.utils.SharedPreferencesHelper;
 
 import butterknife.Bind;
 
@@ -28,6 +19,7 @@ import butterknife.Bind;
  * 救援详情
  * */
 public class DetailHelpRecoderActivity extends Base1Activity implements View.OnClickListener {
+
     @Bind(R.id.tv_detail_time)
     TextView textViewTime;//呼救时间
     @Bind(R.id.tv_detail_no)
@@ -50,17 +42,27 @@ public class DetailHelpRecoderActivity extends Base1Activity implements View.OnC
     TextView textViewBeiZhu;//备注
     @Bind(R.id.tv_position)
     TextView textViewPosition;//地理位置
+
     @Override
     public int getContentView() {
         return R.layout.activity_detail_help_recoder;
     }
 
     @Override
-    protected void initView() {
-        super.initView();
+    public void initView() {
         setTitle("救援详情");
         getData();
         setListener();
+    }
+
+    @Override
+    public void initData() {
+
+    }
+
+    @Override
+    public void initListener() {
+
     }
 
     private void setListener() {

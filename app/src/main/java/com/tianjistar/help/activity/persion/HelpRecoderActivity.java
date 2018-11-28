@@ -1,10 +1,10 @@
 package com.tianjistar.help.activity.persion;
 
 import android.graphics.Color;
+import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -23,11 +23,14 @@ import static com.tianjistar.help.utils.Tools.dip2px;
  * 救援记录
  * **/
 public class HelpRecoderActivity extends Base1Activity {
-    private TabLayout tabLayout;
-    private ViewPager vp;
-    private String[] title;
-    private ArrayList<HelpRecoderFragment> list;
 
+    private TabLayout tabLayout;
+    private ViewPager mViewPager;
+
+    private String[] title;
+    private String[] title_code = {"10","0","5","4","99"};
+    private ArrayList<HelpRecoderFragment> list;
+    private HelpRecoderViewPagerAdapter adapter;
 
     @Override
     public int getContentView() {
@@ -35,24 +38,30 @@ public class HelpRecoderActivity extends Base1Activity {
     }
 
     @Override
-    protected void initView() {
-        super.initView();
+    public void initView() {
         setTitle("救援记录");
-        tabLayout=(TabLayout)findViewById(R.id.tb_layout);
-        vp=(ViewPager)findViewById(R.id.vp);
-        title=getResources().getStringArray(R.array.tab_title);
-        list=new ArrayList<>();
-        for (int i = 0; i < title.length; i++) {
+        tabLayout = (TabLayout)findViewById(R.id.tb_layout);
+        mViewPager = (ViewPager)findViewById(R.id.vp);
+    }
+
+    @Override
+    public void initData() {
+        title = getResources().getStringArray(R.array.tab_title);
+        list = new ArrayList<>();
+
+        for (int i = 0; i < title_code.length; i++) {
             HelpRecoderFragment fragment=new HelpRecoderFragment();
-            Bundle bundle=new Bundle();
-            bundle.putString("type",title[i]);
+            Bundle bundle = new Bundle();
+            bundle.putString("state",title_code[i]);
             fragment.setArguments(bundle);
             list.add(fragment);
         }
-        HelpRecoderViewPagerAdapter adapter=new HelpRecoderViewPagerAdapter(getSupportFragmentManager(),list,title);
-        vp.setAdapter(adapter);
+
+        adapter = new HelpRecoderViewPagerAdapter(getSupportFragmentManager(),list,title);
+        mViewPager.setAdapter(adapter);
+
         //设置TabLayout与ViewPager的联动
-        tabLayout.setupWithViewPager(vp);
+        tabLayout.setupWithViewPager(mViewPager);
         reflex(tabLayout);
         tabLayout.setSelectedTabIndicatorHeight(8);
         tabLayout.setSelectedTabIndicatorColor(getResources().getColor(R.color.main_color));
@@ -60,13 +69,16 @@ public class HelpRecoderActivity extends Base1Activity {
         tabLayout.setTabTextColors(Color.parseColor("#686868"),getResources().getColor(R.color.main_color));
         //设置标题的背景色
         tabLayout.setBackgroundColor(Color.parseColor("#ffffff"));
+    }
+
+    @Override
+    public void initListener() {
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 for (int i = 0; i < tabLayout.getTabCount(); i++) {
-                    if(tabLayout.getTabAt(i)==tab)
-                    {
-                        vp.setCurrentItem(i);
+                    if(tabLayout.getTabAt(i)==tab){
+                        mViewPager.setCurrentItem(i);
                         break;
                     }
                 }
@@ -74,15 +86,35 @@ public class HelpRecoderActivity extends Base1Activity {
 
             @Override
             public void onTabUnselected(TabLayout.Tab tab) {
-
             }
 
             @Override
             public void onTabReselected(TabLayout.Tab tab) {
-
             }
+
         });
+
+//        mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+//            @Override
+//            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+//
+//            }
+//
+//            @Override
+//            public void onPageSelected(int position) {
+//                Log.i("info","---onPageSelected---"+position);
+//                //滑动监听加载数据，一次只加载一个标签页
+//                ((HelpRecoderFragment)adapter.getItem(position)).sendMessage();
+//            }
+//
+//            @Override
+//            public void onPageScrollStateChanged(int state) {
+//
+//            }
+//        });
+
     }
+
     public void reflex(final TabLayout tabLayout){
         //了解源码得知 线的宽度是根据 tabView的宽度来设置的
         tabLayout.post(new Runnable() {
@@ -124,4 +156,5 @@ public class HelpRecoderActivity extends Base1Activity {
         });
 
     }
+
 }

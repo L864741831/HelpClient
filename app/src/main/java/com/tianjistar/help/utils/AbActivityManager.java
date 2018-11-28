@@ -16,7 +16,7 @@ import java.util.List;
  */
 public class AbActivityManager {
 
-	private List<Activity> activityList = new LinkedList<Activity>();
+	private List<Activity> activityList = new LinkedList<>();
 	private static AbActivityManager instance;
 
 	private AbActivityManager() {
@@ -66,4 +66,39 @@ public class AbActivityManager {
 			e.printStackTrace();
 		}
 	}
+
+
+
+	/**
+	 * 结束指定的Activity(重载)
+	 */
+	public void finishActivity(Activity activity) {
+		if (activity != null) {
+			// 为与系统Activity栈保持一致，且考虑到手机设置项里的"不保留活动"选项引起的
+			// Activity生命周期调用onDestroy()方法所带来的问题,此处需要作出如下修正
+//			if(activity.isFinishing()){
+//				activityList.remove(activity);
+//				activity.finish();
+//				activity = null;
+//			}
+
+			activityList.remove(activity);
+			activity.finish();
+			activity = null;
+		}
+
+	}
+
+	/**
+	 * 结束指定类名的Activity
+	 */
+	public void finishActivity(Class<?> cls) {
+		for (Activity activity : activityList) {
+			if (activity.getClass().equals(cls)) {
+				finishActivity(activity);
+			}
+		}
+	}
+
+
 }

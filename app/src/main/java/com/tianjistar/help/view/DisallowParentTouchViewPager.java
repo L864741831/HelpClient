@@ -26,7 +26,6 @@ public class DisallowParentTouchViewPager extends ViewPager {
     }
 
     private void initView() {
-
         mView = (ViewGroup) getParent();
     }
 
@@ -53,6 +52,8 @@ public class DisallowParentTouchViewPager extends ViewPager {
         }
         return super.onInterceptTouchEvent(e);
     }
+
+
 //private int current;
 //    /**
 //     * 保存position与对于的View
@@ -106,5 +107,46 @@ public class DisallowParentTouchViewPager extends ViewPager {
 //            }
 //            setLayoutParams(layoutParams);
 //        }
+//    }
+
+
+
+
+//    private ViewGroup parent;
+//
+//    public DisallowParentTouchViewPager(Context context) {
+//        super(context);
+//    }
+//
+//    public DisallowParentTouchViewPager(Context context, AttributeSet attrs) {
+//        super(context, attrs);
+//    }
+//
+//    public void setNestParent(ViewGroup parent) {
+//        this.parent = parent;
+//    }
+//
+//    @Override
+//    public boolean dispatchTouchEvent(MotionEvent ev) {
+//        if (parent != null) {
+//            parent.requestDisallowInterceptTouchEvent(true);
+//        }
+//        return super.dispatchTouchEvent(ev);
+//    }
+//
+//    @Override
+//    public boolean onInterceptTouchEvent(MotionEvent ev) {
+//        if (parent != null) {
+//            parent.requestDisallowInterceptTouchEvent(true);
+//        }
+//        return super.onInterceptTouchEvent(ev);
+//    }
+//
+//    @Override
+//    public boolean onTouchEvent(MotionEvent ev) {
+//        if (parent != null) {
+//            parent.requestDisallowInterceptTouchEvent(true);
+//        }
+//        return super.onTouchEvent(ev);
 //    }
 }

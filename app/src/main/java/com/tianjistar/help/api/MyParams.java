@@ -12,7 +12,7 @@ import java.util.List;
  */
 public class MyParams {
 
-    private final List<KeyValue> params = new ArrayList<KeyValue>();
+    private final List<KeyValue> params = new ArrayList<>();
 
     public void put(String key, Object value) {
         this.params.add(new KeyValue(key, value));

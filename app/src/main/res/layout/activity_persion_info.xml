@@ -1,31 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/balkground"
     tools:context="com.tianjistar.help.activity.persion.PersionInfoActivity">
-    <include layout="@layout/top_bar_commom_text"></include>
+
+    <include layout="@layout/top_bar_commom_text"/>
+
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dimen_1_dp" 
+        android:layout_height="@dimen/dimen_1_dp"
         android:background="#e1e1e1"/>
+
     <RelativeLayout
         android:id="@+id/rl_info_head"
         android:background="@color/white"
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="70dp">
+
         <TextView
             android:layout_centerVertical="true"
             android:layout_marginLeft="@dimen/dimen_20_dp"
             android:text="头像设置"
             android:textColor="#030303"
-            android:textSize="15sp"
+            android:textSize="15dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
+
         <de.hdodenhof.circleimageview.CircleImageView
             android:layout_marginRight="@dimen/dimen_19_dp"
             android:layout_alignParentRight="true"
@@ -36,11 +40,14 @@
             android:layout_marginLeft="@dimen/dimen_20_dp"
             android:layout_width="@dimen/dimen_50_dp"
             android:layout_height="@dimen/dimen_50_dp" />
+
     </RelativeLayout>
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
         android:background="#e1e1e1"/>
+
     <RelativeLayout
         android:id="@+id/rl_info_sex"
         android:layout_width="match_parent"
@@ -54,7 +61,9 @@
             android:layout_centerVertical="true"
             android:text="性别"
             android:textColor="#030303"
-            android:textSize="15sp" />
+
+            android:textSize="15dp" />
+
         <TextView
             android:id="@+id/tv_info_sex"
             android:layout_width="wrap_content"
@@ -62,9 +71,10 @@
             android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
             android:layout_marginRight="36dp"
-            android:text="男"
+            android:text="点击选择"
             android:textColor="#666666"
-            android:textSize="13sp" />
+            android:textSize="13dp" />
+
         <ImageView
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
@@ -73,11 +83,14 @@
             android:src="@drawable/ic_persion_next"
             android:layout_width="52dp"
             android:layout_height="52dp" />
+
     </RelativeLayout>
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
         android:background="#e1e1e1"/>
+
     <RelativeLayout
         android:id="@+id/rl_info_xue"
         android:layout_width="match_parent"
@@ -91,7 +104,8 @@
             android:layout_centerVertical="true"
             android:text="血型"
             android:textColor="#030303"
-            android:textSize="15sp" />
+            android:textSize="15dp" />
+
         <TextView
             android:gravity="right"
             android:id="@+id/tv_info_xue"
@@ -103,7 +117,8 @@
             android:hint="点击选择"
             android:text=""
             android:textColor="#666666"
-            android:textSize="13sp" />
+            android:textSize="13dp" />
+
         <ImageView
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
@@ -112,11 +127,14 @@
             android:src="@drawable/ic_persion_next"
             android:layout_width="52dp"
             android:layout_height="52dp" />
+
     </RelativeLayout>
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
         android:background="#e1e1e1"/>
+
     <RelativeLayout
         android:id="@+id/rl_info_day"
         android:layout_width="match_parent"
@@ -130,7 +148,8 @@
             android:layout_centerVertical="true"
             android:text="生日"
             android:textColor="#030303"
-            android:textSize="15sp" />
+            android:textSize="15dp" />
+
         <TextView
             android:id="@+id/tv_info_day"
             android:layout_width="wrap_content"
@@ -141,7 +160,8 @@
             android:hint="点击选择"
             android:text=""
             android:textColor="#666666"
-            android:textSize="13sp" />
+            android:textSize="13dp" />
+
         <ImageView
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
@@ -150,11 +170,14 @@
             android:src="@drawable/ic_persion_next"
             android:layout_width="52dp"
             android:layout_height="52dp" />
+
     </RelativeLayout>
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
         android:background="#e1e1e1"/>
+
     <RelativeLayout
         android:id="@+id/rl_info_phone"
         android:layout_width="match_parent"
@@ -168,21 +191,24 @@
             android:layout_centerVertical="true"
             android:text="联系方式"
             android:textColor="#030303"
-            android:textSize="15sp" />
+            android:textSize="15dp" />
+
         <EditText
-            android:inputType="phone"
-            android:background="@null"
-            android:singleLine="true"
             android:id="@+id/et_info_phone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:inputType="phone"
+            android:background="@null"
+            android:singleLine="true"
             android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
             android:layout_marginRight="36dp"
+            android:enabled="false"
             android:hint="点击输入"
             android:text=""
             android:textColor="#666666"
-            android:textSize="13sp" />
+            android:textSize="13dp" />
+
         <ImageView
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
@@ -191,11 +217,14 @@
             android:src="@drawable/ic_persion_next"
             android:layout_width="52dp"
             android:layout_height="52dp" />
+
     </RelativeLayout>
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
         android:background="#e1e1e1"/>
+
     <RelativeLayout
         android:id="@+id/rl_info_name"
         android:layout_width="match_parent"
@@ -209,20 +238,21 @@
             android:layout_centerVertical="true"
             android:text="昵称"
             android:textColor="#030303"
-            android:textSize="15sp" />
+            android:textSize="15dp" />
+
         <EditText
-            android:background="@null"
-            android:singleLine="true"
             android:id="@+id/et_info_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@null"
+            android:singleLine="true"
             android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
             android:layout_marginRight="36dp"
             android:hint="点击输入"
-            android:text=""
             android:textColor="#666666"
-            android:textSize="13sp" />
+            android:textSize="13dp" />
+
         <ImageView
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
@@ -231,34 +261,36 @@
             android:src="@drawable/ic_persion_next"
             android:layout_width="52dp"
             android:layout_height="52dp" />
+
     </RelativeLayout>
+
     <RelativeLayout
-        android:layout_marginTop="@dimen/dimen_10_dp"
         android:id="@+id/rl_info_realname"
         android:layout_width="match_parent"
         android:layout_height="51dp"
+        android:layout_marginTop="@dimen/dimen_10_dp"
         android:background="@color/white">
 
         <TextView
-            android:layout_marginLeft="@dimen/dimen_20_dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/dimen_20_dp"
             android:text="实名认证"
             android:textColor="#030303"
-            android:textSize="15sp" />
+            android:textSize="15dp" />
+
         <TextView
-            android:visibility="gone"
-            android:id="@+id/tv_info_realname"
+            android:id="@+id/tv_info_real_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
             android:layout_marginRight="36dp"
-            android:hint=""
             android:text=""
             android:textColor="#666666"
-            android:textSize="13sp" />
+            android:textSize="13dp" />
+
         <ImageView
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
@@ -267,5 +299,7 @@
             android:src="@drawable/ic_persion_next"
             android:layout_width="52dp"
             android:layout_height="52dp" />
+
     </RelativeLayout>
+
 </LinearLayout>

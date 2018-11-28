@@ -1,6 +1,7 @@
 package com.tianjistar.help.utils;
 
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
@@ -20,13 +21,14 @@ import in.srain.cube.views.ptr.PtrHandler;
  */
 public class PtrHelper<T extends Serializable> {
 
-    public static final int START_INDEX = 0;//分页数据开始的下标
+    public static final int START_INDEX = 1;//分页数据开始的下标
+//    public static final int START_INDEX = 0;//分页数据开始的下标
 
     private PtrFrameLayout mPtrFrame;
 
     protected int curpage = START_INDEX;// 当前页码
 
-    private int pageSize = 20;// 每个页面的数据数量
+    private int pageSize = 10;// 每个页面的数据数量
 
     protected QuickAdapter<T> mAdapter;// 适配器
 
@@ -54,6 +56,7 @@ public class PtrHelper<T extends Serializable> {
 //        this.mAdapter_my = mAdapter_my;
 //        this.mData = mData;
 //    }
+
     /**
      * 设置适配器
      *
@@ -93,6 +96,7 @@ public class PtrHelper<T extends Serializable> {
             mAdapter.loadMoreEnd();
         }
     }
+
     /**
      * 允许下拉刷新
      *
@@ -153,6 +157,7 @@ public class PtrHelper<T extends Serializable> {
                 onRequestDataListener.onRequestData(true, curpage, pageSize);
             }
         });
+
         /**
          * 上拉加载
          */
@@ -163,7 +168,7 @@ public class PtrHelper<T extends Serializable> {
                     mRecyclerView.postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                            curpage += pageSize;
+                            curpage += pageSize/10;
                             onRequestDataListener.onRequestData(false, curpage, pageSize);
                         }
                     }, 200);
@@ -207,4 +212,5 @@ public class PtrHelper<T extends Serializable> {
     public static interface OnRequestDataListener {
         void onRequestData(final boolean pullToRefresh, int curpage, int pageSize);
     }
+
 }

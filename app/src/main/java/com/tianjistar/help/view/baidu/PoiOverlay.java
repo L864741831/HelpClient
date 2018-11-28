@@ -47,7 +47,7 @@ public class PoiOverlay extends OverlayManager {
         if (mPoiResult == null || mPoiResult.getAllPoi() == null) {
             return null;
         }
-        List<OverlayOptions> markerList = new ArrayList<OverlayOptions>();
+        List<OverlayOptions> markerList = new ArrayList<>();
         int markerSize = 0;
         for (int i = 0; i < mPoiResult.getAllPoi().size()
                 && markerSize < MAX_POI_SIZE; i++) {
@@ -56,10 +56,11 @@ public class PoiOverlay extends OverlayManager {
             }
             markerSize++;
             Bundle bundle = new Bundle();
-            bundle.putInt("index", i);
+//            bundle.putInt("index", i);
+            bundle.putString("index", ""+i);
             markerList.add(new MarkerOptions()
-                    .icon(BitmapDescriptorFactory.fromAssetWithDpi("Icon_mark"
-                            + markerSize + ".png")).extraInfo(bundle)
+                    .icon(BitmapDescriptorFactory.fromAssetWithDpi("Icon_mark"+ markerSize + ".png"))
+                    .extraInfo(bundle)
                     .position(mPoiResult.getAllPoi().get(i).location));
             
         }

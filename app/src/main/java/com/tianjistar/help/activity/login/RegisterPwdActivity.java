@@ -1,7 +1,5 @@
 package com.tianjistar.help.activity.login;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.text.Editable;
 import android.text.Selection;
 import android.text.Spannable;
@@ -15,8 +13,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.tianjistar.help.R;
+import com.tianjistar.help.api.BaseHttpCallbackListener;
+import com.tianjistar.help.api.Define;
+import com.tianjistar.help.api.Element;
+import com.tianjistar.help.api.MyParams;
+import com.tianjistar.help.api.VictorHttpUtil;
 import com.tianjistar.help.app.MyApplication;
 import com.tianjistar.help.base.Base1Activity;
+import com.tianjistar.help.utils.AppUtil;
 import com.tianjistar.help.widget.ClearEditText;
 
 import butterknife.Bind;
@@ -25,6 +29,7 @@ import butterknife.Bind;
  * 注册之输入密码
  * */
 public class RegisterPwdActivity extends Base1Activity implements View.OnClickListener {
+
     @Bind(R.id.tv_regest_phone)
     TextView textViewPhone;
     @Bind(R.id.btn_regest)
@@ -36,9 +41,8 @@ public class RegisterPwdActivity extends Base1Activity implements View.OnClickLi
     @Bind(R.id.iv_hide)
     ImageView imageViewHide;
     private boolean isHidden=false;
-    String phone="";
-    String code="";
 
+    private String phone="",code="",forget="";
 
     @Override
     public int getContentView() {
@@ -46,20 +50,31 @@ public class RegisterPwdActivity extends Base1Activity implements View.OnClickLi
     }
 
     @Override
-    protected void initView() {
-        super.initView();
+    public void initView() {
         setTitle("注册");
-        phone=getIntent().getStringExtra("moble");
-        code=getIntent().getStringExtra("code");
+    }
+
+    @Override
+    public void initData() {
+        phone = getIntent().getStringExtra("mobile");
+        code = getIntent().getStringExtra("code");
+        forget = getIntent().getStringExtra("forget");
+
+        if (!TextUtils.isEmpty(forget)){
+            if ("forget".equals(forget)){
+                buttonRegest.setText("完成修改");
+            }
+        }
+
         if (!TextUtils.isEmpty(phone)){
             String substring = phone.substring(3, 8);
             String replace = phone.replace(substring, "****");
             textViewPhone.setText(replace);
         }
-        setListener();
     }
 
-    private void setListener() {
+    @Override
+    public void initListener() {
         imageViewHide.setOnClickListener(this);
         buttonRegest.setOnClickListener(this);
         clearEditTextSurePwd.addTextChangedListener(new TextWatcher() {
@@ -88,8 +103,8 @@ public class RegisterPwdActivity extends Base1Activity implements View.OnClickLi
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn_regest:
-                String newpwd=clearEditTextNewPwd.getText().toString().trim();
-                String surepwd=clearEditTextSurePwd.getText().toString().trim();
+                String newpwd = clearEditTextNewPwd.getText().toString().trim();
+                String surepwd = clearEditTextSurePwd.getText().toString().trim();
                 if (TextUtils.isEmpty(newpwd)){
                     MyApplication.showToast("请输入新密码");
                     return;
@@ -103,6 +118,7 @@ public class RegisterPwdActivity extends Base1Activity implements View.OnClickLi
                     return;
                 }
 
+                register(surepwd);
                 break;
             case R.id.iv_hide:
                 if (isHidden) {
@@ -127,4 +143,32 @@ public class RegisterPwdActivity extends Base1Activity implements View.OnClickLi
                 break;
         }
     }
+
+    /**注册
+     * @param surepwd 密码
+     */
+    private void register(String surepwd) {
+        MyParams params = new MyParams();
+        params.put("mobile", phone);//用户名或手机号
+        params.put("password", surepwd);
+        params.put("validateCode", code);
+//        params.put("app","yes");
+//        params.put("imei", AppUtil.getPhoneImei(mActivity));
+
+        VictorHttpUtil.doPost(false, mContext, Define.REGISTER, params, true, "请稍后...",
+                new BaseHttpCallbackListener<Element>() {
+                    @Override
+                    public void callbackSuccess(String url, Element element) {
+                        super.callbackSuccess(url, element);
+                        // 成功
+                        MyApplication.showToastLong("成功，请登录");
+
+                        MyApplication.openActivity(mActivity, LoginActivity.class);
+                        finish();
+                    }
+                });
+    }
+
+
+
 }

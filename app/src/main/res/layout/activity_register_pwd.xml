@@ -7,7 +7,8 @@
     android:orientation="vertical"
     android:background="#ffffff"
     tools:context="com.tianjistar.help.activity.login.RegisterPwdActivity">
-    <include layout="@layout/top_bar_commom"></include>
+    <include layout="@layout/top_bar_commom"/>
+
     <TextView
         android:layout_marginTop="@dimen/dimen_35_dp"
         android:layout_marginRight="@dimen/dimen_24_dp"
@@ -17,6 +18,7 @@
         android:layout_height="wrap_content"
         android:textSize="23sp"
         android:textColor="#251919"/>
+
     <LinearLayout
         android:layout_marginTop="@dimen/dimen_13_dp"
         android:layout_marginRight="@dimen/dimen_24_dp"
@@ -24,12 +26,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
+
         <TextView
             android:textSize="12sp"
             android:textColor="#251919"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="请为  "/>
+
         <TextView
             android:id="@+id/tv_regest_phone"
             android:textSize="12sp"
@@ -37,17 +41,21 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="157****4545"/>
+
         <TextView
             android:textSize="12sp"
             android:textColor="#251919"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="  账号设置密码  "/>
+
     </LinearLayout>
+
     <RelativeLayout
         android:layout_marginTop="74dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <com.tianjistar.help.widget.ClearEditText
             android:id="@+id/et_new_pwd"
             android:background="@null"
@@ -61,6 +69,7 @@
             android:textColor="@color/login_see"
             android:textColorHint="@color/login_hint"
             android:textSize="16sp"/>
+
         <ImageView
             android:id="@+id/iv_hide"
             android:layout_marginRight="@dimen/dimen_21_dp"
@@ -70,6 +79,7 @@
             android:layout_centerVertical="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
+
     </RelativeLayout>
 
     <View
@@ -79,20 +89,20 @@
         android:layout_marginRight="@dimen/dimen_21_dp"
         android:background="@color/login_xian"/>
 
-        <com.tianjistar.help.widget.ClearEditText
-            android:layout_marginTop="@dimen/dimen_10_dp"
-            android:id="@+id/et_sure_pwd"
-            android:background="@null"
-            android:layout_width="match_parent"
-            android:layout_height="52dp"
-            android:gravity="center_vertical"
-            android:hint="确认新密码"
-            android:inputType="textPassword"
-            android:paddingLeft="21dp"
-            android:layout_marginRight="45dp"
-            android:textColor="@color/login_see"
-            android:textColorHint="@color/login_hint"
-            android:textSize="16sp"/>
+    <com.tianjistar.help.widget.ClearEditText
+        android:layout_marginTop="@dimen/dimen_10_dp"
+        android:id="@+id/et_sure_pwd"
+        android:background="@null"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:gravity="center_vertical"
+        android:hint="确认新密码"
+        android:inputType="textPassword"
+        android:paddingLeft="21dp"
+        android:layout_marginRight="45dp"
+        android:textColor="@color/login_see"
+        android:textColorHint="@color/login_hint"
+        android:textSize="16sp"/>
 
     <View
         android:layout_width="match_parent"
@@ -100,6 +110,7 @@
         android:layout_marginLeft="@dimen/dimen_21_dp"
         android:layout_marginRight="@dimen/dimen_21_dp"
         android:background="@color/login_xian"/>
+
     <Button
         android:id="@+id/btn_regest"
         android:textSize="20sp"

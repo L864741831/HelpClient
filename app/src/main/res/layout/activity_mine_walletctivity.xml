@@ -1,112 +1,128 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
     android:orientation="vertical"
     tools:context="com.tianjistar.help.activity.persion.MineWalletctivity">
-    <include layout="@layout/top_bar_commom_text"></include>
+
+    <include layout="@layout/top_bar_commom_text"/>
+
     <TextView
+        android:layout_width="@dimen/dimen_30_dp"
+        android:layout_height="@dimen/dimen_2_dp"
         android:layout_marginTop="43dp"
         android:gravity="center_horizontal"
         android:layout_gravity="center_horizontal"
         android:background="@drawable/xian_edit"
-        android:layout_width="@dimen/dimen_30_dp"
-        android:layout_height="@dimen/dimen_2_dp" />
+        />
+
     <TextView
-        android:textSize="16sp"
-        android:textColor="@color/main_color"
-        android:layout_marginTop="32.5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:layout_gravity="center_horizontal"
+        android:layout_marginTop="32dp"
         android:text="您的天机卡余额（元）"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-    <TextView
-        android:textSize="64sp"
+        android:textSize="16dp"
         android:textColor="@color/main_color"
-        android:layout_marginTop="29dp"
+        />
+
+    <TextView
+        android:id="@+id/tv_balance"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:layout_gravity="center_horizontal"
-        android:text="59"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-    <TextView
-        android:textSize="18sp"
+        android:layout_marginTop="20dp"
+        android:text="00.00"
+        android:textSize="50dp"
         android:textColor="@color/main_color"
-        android:gravity="center_horizontal"
-        android:layout_gravity="center_horizontal"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
         android:text="元"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:textSize="18dp"
+        android:textColor="@color/main_color"
+        />
+
     <RelativeLayout
-        android:background="@drawable/ic_bg_money"
-        android:layout_marginTop="@dimen/dimen_10_dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <!--<ImageView-->
-            <!--android:scaleType="fitXY"-->
-            <!--android:src="@drawable/ic_bg_money"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="match_parent" />-->
+        android:layout_height="match_parent"
+        android:background="@drawable/ic_bg_money"
+        android:layout_marginTop="10dp"
+        >
+
         <LinearLayout
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="151dp"
-            android:layout_alignParentBottom="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="151dp"
             android:orientation="vertical">
+
             <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
                 android:layout_gravity="center_horizontal"
                 android:text="您有一笔500元的交易已转入"
-                android:textSize="16sp"
+                android:textSize="16dp"
+                android:textColor="#ffffff"/>
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="#ffffff"/>
-            <LinearLayout
+                android:orientation="horizontal"
                 android:gravity="center_horizontal"
                 android:layout_gravity="center_horizontal"
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dimen_10_dp">
+                android:layout_marginTop="10dp"
+                >
+
                 <TextView
-                    android:gravity="center_horizontal"
-                    android:layout_gravity="center_horizontal"
-                    android:textColor="#ffffff"
-                    android:textSize="16sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="余额"/>
+                    android:gravity="center_horizontal"
+                    android:layout_gravity="center_horizontal"
+                    android:text="余额"
+                    android:textColor="#ffffff"
+                    android:textSize="16dp"
+                    />
 
                 <TextView
                     android:id="@+id/tv_look"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
                     android:layout_gravity="center_horizontal"
                     android:text="  去查看>"
-                    android:textSize="16sp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="#ffffff"/>
+                    android:textSize="16dp"
+                    android:textColor="#ffffff"
+                    />
+
             </LinearLayout>
 
         </LinearLayout>
+
         <TextView
             android:id="@+id/tv_pay_money"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
             android:background="@drawable/pay_money"
-            android:layout_marginBottom="@dimen/dimen_55_dp"
-            android:layout_marginRight="32.5dp"
-            android:layout_marginLeft="32.5dp"
+            android:layout_marginBottom="55dp"
+            android:layout_marginRight="32dp"
+            android:layout_marginLeft="32dp"
             android:gravity="center"
             android:layout_alignParentBottom="true"
-            android:textColor="@color/main_color"
-            android:textSize="17sp"
             android:text="充值"
-            android:layout_width="match_parent"
-            android:layout_height="55dp" />
+            android:textColor="@color/main_color"
+            android:textSize="17dp"
+            />
+
     </RelativeLayout>
 
 </LinearLayout>

@@ -1,9 +1,6 @@
 package com.tianjistar.help.activity.persion;
 
 import android.graphics.drawable.ColorDrawable;
-import android.support.design.widget.AppBarLayout;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Gravity;
@@ -18,7 +15,6 @@ import android.widget.TextView;
 import com.alibaba.fastjson.JSON;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.tianjistar.help.R;
-import com.tianjistar.help.adapter.DetailSalfRecoderAdapter;
 import com.tianjistar.help.adapter.QuickAdapter;
 import com.tianjistar.help.api.BaseHttpCallbackListener;
 import com.tianjistar.help.api.Define;
@@ -61,8 +57,7 @@ public class HelpProgressActivity extends Base1Activity {
     }
 
     @Override
-    protected void initView() {
-        super.initView();
+    public void initView() {
         setTitle("救援进展");
         recyclerView.setLayoutManager(mManager = new LinearLayoutManager(mActivity));//设置布局管理器
         mAdapter = new HelpProgressAdapter(R.layout.item_progress, mDatas);
@@ -113,6 +108,16 @@ public class HelpProgressActivity extends Base1Activity {
                 });
             }
         });
+    }
+
+    @Override
+    public void initData() {
+
+    }
+
+    @Override
+    public void initListener() {
+
     }
 
     private void getData() {

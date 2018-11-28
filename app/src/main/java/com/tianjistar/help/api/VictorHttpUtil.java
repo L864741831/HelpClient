@@ -4,24 +4,27 @@ import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.text.TextUtils;
-
+import android.util.Log;
 
 import com.alibaba.fastjson.JSON;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.AbsCallback;
 import com.lzy.okgo.callback.FileCallback;
+import com.lzy.okgo.model.HttpHeaders;
 import com.lzy.okgo.request.BaseRequest;
 import com.lzy.okgo.request.GetRequest;
 import com.lzy.okgo.request.PostRequest;
 import com.orhanobut.logger.Logger;
 import com.tianjistar.help.R;
-import com.tianjistar.help.app.AppSpContact;
+import com.tianjistar.help.activity.login.LoginActivity;
+import com.tianjistar.help.app.Constants;
 import com.tianjistar.help.app.MyApplication;
 import com.tianjistar.help.bean.PhotoEvent;
 import com.tianjistar.help.utils.AbDialogUtil;
 import com.tianjistar.help.utils.AppUtil;
+import com.tianjistar.help.utils.LogUtil;
 import com.tianjistar.help.utils.MD5Util;
-import com.tianjistar.help.utils.MyLogger;
+import com.tianjistar.help.utils.PreferencesUtils;
 import com.tianjistar.help.utils.SharedPreferencesHelper;
 
 import org.greenrobot.eventbus.EventBus;
@@ -34,6 +37,8 @@ import java.util.List;
 
 import okhttp3.Call;
 import okhttp3.Response;
+
+import static com.tianjistar.help.base.BaseApplication.showToast;
 
 
 /**
@@ -68,8 +73,8 @@ public class VictorHttpUtil {
             }
             return;
         }
-        String userID= SharedPreferencesHelper.getInstance().getString(AppSpContact.SP_UID);
-        String imei= SharedPreferencesHelper.getInstance().getString(AppSpContact.SP_DEVICEID);
+        String userID= SharedPreferencesHelper.getInstance().getString(Constants.SP_UID);
+        String imei= SharedPreferencesHelper.getInstance().getString(Constants.SP_DEVICEID);
         long timestamp = System.currentTimeMillis() / 1000;// 获取时间戳（单位：秒）
         GetRequest request;
         String signUrl = _genSignUrl(url, timestamp, params);// 变换url
@@ -77,9 +82,9 @@ public class VictorHttpUtil {
             request = OkGo.get(signUrl)
                     .tag(context)
                     .headers("userid",userID)
-                    .headers("imei",imei);////添加header
+                    .headers("imei",imei); //添加header
         }else {
-           request = OkGo.get(signUrl)
+            request = OkGo.get(signUrl)
                     .tag(context);
         }
 
@@ -108,38 +113,46 @@ public class VictorHttpUtil {
         if (!AppUtil.isNetworkAvailable(context)) {
             // 没有网络时提示
             if (callbackListener != null) {
+                MyApplication.showToast("无网络，请设置网络！");
                 callbackListener.callbackNoNetwork(url);
             }
             return;
         }
+
         PostRequest request;
-        String userID= SharedPreferencesHelper.getInstance().getString(AppSpContact.SP_UID);
-        String imei= SharedPreferencesHelper.getInstance().getString(AppSpContact.SP_DEVICEID);
-        long timestamp = System.currentTimeMillis() / 1000;// 获取时间戳（单位：秒）
-        String signUrl = _genSignUrl(url, timestamp, params);// 变换url
-        if (!ishead) {
-            request= OkGo.post(url)
+//        String userID= SharedPreferencesHelper.getInstance().getString(Constants.SP_UID);
+//        String imei= SharedPreferencesHelper.getInstance().getString(Constants.SP_DEVICEID);
+//        long timestamp = System.currentTimeMillis() / 1000;// 获取时间戳（单位：秒）
+//        String signUrl = _genSignUrl(url, timestamp, params);// 变换url
+        if (ishead) {
+            request = OkGo.post(url)
                     .headers("Versions",AppUtil.getVersionName(context)+"") //版本名称
-             .tag(context);
-        }else {
-           request = OkGo.post(url)
                     .tag(context);
+        }else {
+            request = OkGo.post(url)
+//                    .headers(headers)
+                    .tag(context);
+
         }
+
         // 添加请求参数
         _addReqParams(params, request);
 
+        Log.i("info",url+"---params---"+params);
+
         // 打印请求参数
-        Logger.e(String.format("url: %s\nparams: %s", url, params));
+//        Logger.e(String.format("url: %s\nparams: %s", url, params));
 
         // 发送请求
         request.execute(new ElementCallback(context, url, showProgressDialog, loadingText, callbackListener));
-
     }
+
     public static void doPost(Context context, String url, MyParams params, boolean showProgressDialog,
                               String loadingText, HttpCallbackListener callbackListener) {
         if (!AppUtil.isNetworkAvailable(context)) {
             // 没有网络时提示
             if (callbackListener != null) {
+                MyApplication.showToast("无网络啦！");
                 callbackListener.callbackNoNetwork(url);
             }
             return;
@@ -147,11 +160,14 @@ public class VictorHttpUtil {
         long timestamp = System.currentTimeMillis() / 1000;// 获取时间戳（单位：秒）
         String signUrl = _genSignUrl(url, timestamp, params);// 变换url
         PostRequest   request = OkGo.post(signUrl)
-                    .tag(context);
+                .tag(context);
         // 添加请求参数
         _addReqParams(params, request);
+
+        Log.i("info",url+"---params---"+params);
+
         // 打印请求参数
-        Logger.e(String.format("url: %s\nparams: %s", url, params));
+//        Logger.e(String.format("url: %s\nparams: %s", url, params));
         // 发送请求
         request.execute(new ElementCallback(context, url, showProgressDialog, loadingText, callbackListener));
     }
@@ -175,7 +191,9 @@ public class VictorHttpUtil {
                         request.params(item.key, (Double) item.value);
                     } else if (item.value instanceof Float) {
                         request.params(item.key, (Float) item.value);
-                    } else if (request instanceof PostRequest && item.value instanceof File) {
+                    }else if (item.value instanceof Boolean) {
+                        request.params(item.key, (Boolean) item.value);
+                    }else if (request instanceof PostRequest && item.value instanceof File) {
                         PostRequest pr = (PostRequest) request;
                         pr.params(item.key, (File) item.value);
                     }
@@ -283,7 +301,7 @@ public class VictorHttpUtil {
                 }
             }
         }
-     String sign = MD5Util.md5(builder.toString());// 生成签名
+        String sign = MD5Util.md5(builder.toString());// 生成签名
         return sign;
     }
 
@@ -327,17 +345,19 @@ public class VictorHttpUtil {
                 baseHttpCallbackListener.setContext(context);
             }
         }
+
         /**
          * 对返回数据进行操作的回调， UI线程
          */
         @Override
         public void onSuccess(Element element, Call call, Response response) {
             if (element == null) {
-                MyApplication.showToast("解析JSON数据为空，请检查！！！");
+                showToast("解析JSON数据为空，请检查！！！");
                 return;
             }
-            switch (element.result) {
-                case 1:// 1-成功
+
+            switch (element.code) {
+                case 2:// 2-成功
                     if (listener != null) {
                         listener.callbackSuccess(url, element);
                     }
@@ -347,11 +367,11 @@ public class VictorHttpUtil {
                         listener.callbackSuccess(url, element);
                     }
                     break;
-                case 100:// 5 需要重新登录
-//                    User user = new User();
-//                    MyApplication.saveUser(user);
-                    //发送通知关闭MainActivity,再跳转到登录页
-                    EventBus.getDefault().post(new PhotoEvent("100"));
+                case 108:// 5 需要重新登录
+                    SharedPreferencesHelper.getInstance().putBoolean(Constants.SP_FIRST_LAUCH,false);
+                    SharedPreferencesHelper.getInstance().putBoolean(Constants.LOGIN_SUCCESS,false);
+                    PreferencesUtils.removeAllData(MyApplication.getContext());
+                    MyApplication.openActivity(LoginActivity.class);
                     break;
                 default:// 1-权限验证错误，跳转到登录界面, 2-数据库操作失败， 3-业务逻辑失败， 4-服务器错误
                     if (listener != null) {
@@ -359,6 +379,30 @@ public class VictorHttpUtil {
                     }
                     break;
             }
+
+//            switch (element.result) {
+//                case 1:// 1-成功
+//                    if (listener != null) {
+//                        listener.callbackSuccess(url, element);
+//                    }
+//                    break;
+//                case 3: //
+//                    if (listener != null) {
+//                        listener.callbackSuccess(url, element);
+//                    }
+//                    break;
+//                case 100:// 5 需要重新登录
+////                    User user = new User();
+////                    MyApplication.saveUser(user);
+//                    //发送通知关闭MainActivity,再跳转到登录页
+//                    EventBus.getDefault().post(new PhotoEvent("100"));
+//                    break;
+//                default:// 1-权限验证错误，跳转到登录界面, 2-数据库操作失败， 3-业务逻辑失败， 4-服务器错误
+//                    if (listener != null) {
+//                        listener.callbackError(url, element);
+//                    }
+//                    break;
+//            }
         }
 
         /**
@@ -369,12 +413,15 @@ public class VictorHttpUtil {
             if (showProgressDialog) {
                 AbDialogUtil.removeDialog(context, url);
             }
-            Logger.e("verrr", url + "=" );// 打印错误
+//            Logger.e("verrr", url + "=" );// 打印错误
+
+            Log.i("info","---onError---"+e.getMessage());
+
             if (listener != null) {
                 if (e.getClass() == JSONException.class) {
                     listener.callbackErrorJSONFormat(url);
                 } else {
-                    listener.onFaliure(url, AppSpContact.HTTP_SERVER_ERROR_CODE, e.getMessage(), e);
+                    listener.onFaliure(url, Constants.HTTP_SERVER_ERROR_CODE, e.getMessage(), e);
                 }
             }
         }
@@ -384,7 +431,7 @@ public class VictorHttpUtil {
          */
         @Override
         public void parseError(Call call, Exception e) {
-            Logger.e("verrr", url + "=" + e);// 打印错误
+            Log.i("info","---parseError---"+e);// 打印错误
         }
 
         /**
@@ -418,7 +465,9 @@ public class VictorHttpUtil {
         public Element convertSuccess(Response response) throws Exception {
             String str = response.body().string();
 
-            MyLogger.json(str);//打印返回数据
+            LogUtil.i("info","---str---"+str);//打印返回数据
+
+//            MyLogger.json(str);
             return JSON.parseObject(str, Element.class);
         }
 

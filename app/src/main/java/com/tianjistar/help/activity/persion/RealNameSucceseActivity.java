@@ -5,17 +5,10 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-
 import com.tianjistar.help.R;
-import com.tianjistar.help.app.MyApplication;
 import com.tianjistar.help.base.Base1Activity;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import butterknife.Bind;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 /**
  * 各种成功界面
@@ -38,9 +31,7 @@ public class RealNameSucceseActivity extends Base1Activity {
     }
 
     @Override
-    protected void initView() {
-        super.initView();
-
+    public void initView() {
         /**
          * 去绑定银行卡
          */
@@ -55,6 +46,15 @@ public class RealNameSucceseActivity extends Base1Activity {
         });
     }
 
+    @Override
+    public void initData() {
+
+    }
+
+    @Override
+    public void initListener() {
+
+    }
 
 
 }

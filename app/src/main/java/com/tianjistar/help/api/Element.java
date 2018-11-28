@@ -20,7 +20,27 @@ public class Element implements Serializable {
     public String msg;// 前端显示的提示信息
     public String data;// 实际数据
     public int count;// 总记录数
+
+
+    public String rows;
     public JSONObject options;
+
+    public String getRows() {
+        return rows;
+    }
+
+    public void setRows(String rows) {
+        this.rows = rows;
+    }
+
+    public int code;
+    public int getCode() {
+        return code;
+    }
+
+    public void setCode(int code) {
+        this.code = code;
+    }
 
     public int getResult() {
         return result;

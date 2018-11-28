@@ -17,6 +17,25 @@ public class AboutBean {
     private String info;
     private boolean is_compel;
 
+    private String apkEdition;
+    private String apkUrl;
+
+    public String getApkUrl() {
+        return apkUrl;
+    }
+
+    public void setApkUrl(String apkUrl) {
+        this.apkUrl = apkUrl;
+    }
+
+    public String getApkEdition() {
+        return apkEdition;
+    }
+
+    public void setApkEdition(String apkEdition) {
+        this.apkEdition = apkEdition;
+    }
+
     public boolean is_compel() {
         return is_compel;
     }

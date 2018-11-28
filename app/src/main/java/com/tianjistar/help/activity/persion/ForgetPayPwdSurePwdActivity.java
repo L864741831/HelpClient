@@ -1,7 +1,5 @@
 package com.tianjistar.help.activity.persion;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
@@ -30,8 +28,7 @@ public class ForgetPayPwdSurePwdActivity extends Base1Activity {
     }
 
     @Override
-    protected void initView() {
-        super.initView();
+    public void initView() {
         setTitle("设置支付密码");
         pwd=getIntent().getStringExtra("pwd");
         buttonSure.setOnClickListener(new View.OnClickListener() {
@@ -52,5 +49,15 @@ public class ForgetPayPwdSurePwdActivity extends Base1Activity {
 
             }
         });
+    }
+
+    @Override
+    public void initData() {
+
+    }
+
+    @Override
+    public void initListener() {
+
     }
 }

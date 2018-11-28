@@ -1,28 +1,22 @@
 package com.tianjistar.help.activity.persion;
 
 import android.graphics.Color;
+import android.os.Bundle;
 import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.tianjistar.help.R;
-import com.tianjistar.help.adapter.HelpRecoderViewPagerAdapter;
 import com.tianjistar.help.adapter.SafeRecoderViewPagerAdapter;
 import com.tianjistar.help.base.Base1Activity;
-import com.tianjistar.help.fragment.HelpRecoderFragment;
 import com.tianjistar.help.fragment.SafeRecoderFragment;
-import com.tianjistar.help.view.DisallowParentTouchViewPager;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.Bind;
 
@@ -30,13 +24,16 @@ import static com.tianjistar.help.utils.Tools.dip2px;
 
 /**
  * 保险记录
- * **/
+ */
 public class SafeRecorderActivity extends Base1Activity {
 
-    private TabLayout tabLayout;
-    private ViewPager vp;
+    @Bind(R.id.tb_layout)
+    TabLayout tabLayout;
+    @Bind(R.id.viewpager)
+    ViewPager viewpager;
+
     private String[] title;
-    private ArrayList<SafeRecoderFragment> list;
+    private List<SafeRecoderFragment> list;
 
     @Override
     public int getContentView() {
@@ -44,29 +41,47 @@ public class SafeRecorderActivity extends Base1Activity {
     }
 
     @Override
-    protected void initView() {
-        super.initView();
+    public void initView() {
+    }
+
+    @Override
+    public void initData() {
         setTitle("保险记录");
-        tabLayout=(TabLayout)findViewById(R.id.tb_layout);
+        
+        initTabLayout();
+        initRecord();
+    }
+
+    @Override
+    public void initListener() {
+        tabLayout.addOnTabSelectedListener(onTabSelectedListener);
+    }
+
+    private void initTabLayout() {
         LinearLayout linearLayout = (LinearLayout) tabLayout.getChildAt(0);
         linearLayout.setShowDividers(LinearLayout.SHOW_DIVIDER_MIDDLE);
         linearLayout.setDividerDrawable(ContextCompat.getDrawable(this,
                 R.drawable.dvider));
+
         reflex(tabLayout);
-        vp=(ViewPager)findViewById(R.id.vp);
-        title=getResources().getStringArray(R.array.tab_title1);
-        list=new ArrayList<>();
+    }
+
+    private void initRecord() {
+        title = getResources().getStringArray(R.array.tab_title1);
+        list = new ArrayList<>();
+
         for (int i = 0; i < title.length; i++) {
-            SafeRecoderFragment fragment=new SafeRecoderFragment();
-            Bundle bundle=new Bundle();
+            SafeRecoderFragment fragment = new SafeRecoderFragment();
+            Bundle bundle = new Bundle();
             bundle.putString("type",title[i]);
             fragment.setArguments(bundle);
             list.add(fragment);
         }
-        SafeRecoderViewPagerAdapter adapter=new SafeRecoderViewPagerAdapter(getSupportFragmentManager(),list,title);
-        vp.setAdapter(adapter);
+
+        SafeRecoderViewPagerAdapter adapter = new SafeRecoderViewPagerAdapter(getSupportFragmentManager(),list,title);
+        viewpager.setAdapter(adapter);
         //设置TabLayout与ViewPager的联动
-        tabLayout.setupWithViewPager(vp);
+        tabLayout.setupWithViewPager(viewpager);
 
         tabLayout.setSelectedTabIndicatorHeight(8);
         tabLayout.setSelectedTabIndicatorColor(getResources().getColor(R.color.main_color));
@@ -74,29 +89,30 @@ public class SafeRecorderActivity extends Base1Activity {
         tabLayout.setTabTextColors(Color.parseColor("#686868"),getResources().getColor(R.color.main_color));
         //设置标题的背景色
         tabLayout.setBackgroundColor(Color.parseColor("#ffffff"));
-        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-            @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-                for (int i = 0; i < tabLayout.getTabCount(); i++) {
-                    if(tabLayout.getTabAt(i)==tab)
-                    {
-                        vp.setCurrentItem(i);
-                        break;
-                    }
+    }
+
+    TabLayout.OnTabSelectedListener onTabSelectedListener = new TabLayout.OnTabSelectedListener() {
+        @Override
+        public void onTabSelected(TabLayout.Tab tab) {
+            for (int i = 0; i < tabLayout.getTabCount(); i++) {
+                if(tabLayout.getTabAt(i)==tab){
+                    viewpager.setCurrentItem(i);
+                    break;
                 }
             }
+        }
 
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
+        @Override
+        public void onTabUnselected(TabLayout.Tab tab) {
 
-            }
+        }
 
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {
+        @Override
+        public void onTabReselected(TabLayout.Tab tab) {
 
-            }
-        });
-    }
+        }
+    };
+
     public void reflex(final TabLayout tabLayout){
         //了解源码得知 线的宽度是根据 tabView的宽度来设置的
         tabLayout.post(new Runnable() {

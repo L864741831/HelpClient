@@ -1,35 +1,23 @@
 package com.tianjistar.help.activity.persion;
 
-import android.graphics.drawable.ColorDrawable;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import com.alibaba.fastjson.JSON;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.tianjistar.help.R;
 import com.tianjistar.help.adapter.QuickAdapter;
-import com.tianjistar.help.api.BaseHttpCallbackListener;
 import com.tianjistar.help.api.Define;
 import com.tianjistar.help.api.Element;
 import com.tianjistar.help.api.MyParams;
 import com.tianjistar.help.api.RefreshLoadmoreCallbackListener;
 import com.tianjistar.help.api.VictorHttpUtil;
-import com.tianjistar.help.app.AppSpContact;
-import com.tianjistar.help.app.MyApplication;
 import com.tianjistar.help.base.Base1Activity;
 import com.tianjistar.help.bean.WishesBean;
 import com.tianjistar.help.utils.CollectionUtils;
 import com.tianjistar.help.utils.PtrHelper;
-import com.tianjistar.help.utils.SharedPreferencesHelper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,7 +26,7 @@ import butterknife.Bind;
 import in.srain.cube.views.ptr.PtrClassicFrameLayout;
 
 /**
-   钱包明细（交易记录）
+ 钱包明细（交易记录）
  * **/
 public class MineWalletDetailActivity extends Base1Activity {
 
@@ -55,8 +43,7 @@ public class MineWalletDetailActivity extends Base1Activity {
     }
 
     @Override
-    protected void initView() {
-        super.initView();
+    public void initView() {
         setTitle("交易记录");
         mData = new ArrayList<>();
         mRecyclerView = (RecyclerView) findViewById(R.id.rv_wishes_list);
@@ -73,11 +60,22 @@ public class MineWalletDetailActivity extends Base1Activity {
         mPtrHelper.setOnRequestDataListener(new PtrHelper.OnRequestDataListener() {
             @Override
             public void onRequestData(boolean pullToRefresh, int curpage, int pageSize) {
-                _reqData(pullToRefresh, curpage, pageSize);
+//                _reqData(pullToRefresh, curpage, pageSize);
             }
         });
         mPtrHelper.autoRefresh(true);
     }
+
+    @Override
+    public void initData() {
+
+    }
+
+    @Override
+    public void initListener() {
+
+    }
+
     /**
      * 寄语列表适配器
      */

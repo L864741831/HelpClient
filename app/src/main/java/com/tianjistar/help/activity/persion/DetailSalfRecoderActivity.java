@@ -42,8 +42,7 @@ public class DetailSalfRecoderActivity extends Base1Activity {
     }
 
     @Override
-    protected void initView() {
-        super.initView();
+    public void initView() {
         initHeaderView();
         recyclerView.addHeaderView(headerView);
         recyclerView.setLayoutManager(mManager = new LinearLayoutManager(mActivity));//设置布局管理器
@@ -61,6 +60,15 @@ public class DetailSalfRecoderActivity extends Base1Activity {
 
     }
 
+    @Override
+    public void initData() {
+
+    }
+
+    @Override
+    public void initListener() {
+
+    }
 
 
     //处理后退键的情况

@@ -7,34 +7,40 @@
     android:background="@color/main_di"
     android:orientation="vertical"
     tools:context="com.tianjistar.help.activity.persion.SafeRecorderActivity">
-    <include layout="@layout/top_bar_commom"
-        android:id="@+id/in_salf"></include>
+
+    <include
+        android:id="@+id/in_salf"
+        layout="@layout/top_bar_commom"
+        />
+
     <TextView
         android:id="@+id/xian"
         android:layout_below="@+id/in_salf"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dimen_1_dp"
         android:background="#e1e1e1"/>
-    <android.support.design.widget.TabLayout
 
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tb_layout"
+        android:layout_width="match_parent"
+        android:layout_height="42dp"
+        android:background="#ffffff"
         android:layout_span="2"
         android:layout_below="@+id/xian"
         app:tabBackground="@color/white"
         app:tabTextAppearance="@style/TabLayoutTextStyle"
-        android:id="@+id/tb_layout"
         app:tabMode="fixed"
-        app:tabGravity="fill"
-        android:background="#ffffff"
-        android:layout_width="match_parent"
-        android:layout_height="42dp"></android.support.design.widget.TabLayout>
+        app:tabGravity="fill">
+    </android.support.design.widget.TabLayout>
+
     <android.support.v4.view.ViewPager
-        android:background="@color/main_color"
-        android:layout_below="@+id/tb_layout"
-        android:layout_marginTop="@dimen/dimen_10_dp"
+        android:id="@+id/viewpager"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/vp">
-
+        android:background="@color/main_color"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/tb_layout"
+        >
     </android.support.v4.view.ViewPager>
 
 </RelativeLayout>

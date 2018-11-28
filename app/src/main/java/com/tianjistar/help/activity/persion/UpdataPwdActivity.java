@@ -1,7 +1,5 @@
 package com.tianjistar.help.activity.persion;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -17,20 +15,21 @@ import com.tianjistar.help.api.Define;
 import com.tianjistar.help.api.Element;
 import com.tianjistar.help.api.MyParams;
 import com.tianjistar.help.api.VictorHttpUtil;
-import com.tianjistar.help.app.AppSpContact;
+import com.tianjistar.help.app.Constants;
 import com.tianjistar.help.app.MyApplication;
-import com.tianjistar.help.app.SpContact;
 import com.tianjistar.help.base.Base1Activity;
-import com.tianjistar.help.utils.SharedPreferencesHelper;
+import com.tianjistar.help.utils.AppUtil;
+import com.tianjistar.help.utils.PreferencesUtils;
 
 import butterknife.Bind;
 
 /**
- * 修改密码
+ * 修改登录密码
  * */
 public class UpdataPwdActivity extends Base1Activity {
-    @Bind(R.id.bt_updatepassword)
-    Button bt_updatepassword;
+
+    @Bind(R.id.bt_update_password)
+    Button bt_update_password;
     @Bind(R.id.et_tel_num)
     EditText et_tel_num;//原密码
     @Bind(R.id.et_password)
@@ -41,8 +40,6 @@ public class UpdataPwdActivity extends Base1Activity {
     ImageView ivLeft;
     @Bind(R.id.tv_topbar_title)
     TextView tvTopbarTitle;
-    String url;
-
 
     @Override
     public int getContentView() {
@@ -50,31 +47,37 @@ public class UpdataPwdActivity extends Base1Activity {
     }
 
     @Override
-    protected void initView() {
-        super.initView();
-        if (getIntent().getStringExtra("type").equals("1")){//修改登录密码
-            setTitle("修改密码");
-            url= Define.URL_updata_login_pwd;
-        }else if (getIntent().getStringExtra("type").equals("2")){//修改支付密码
-//            int inputType = InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_VARIATION_NORMAL|InputType.TYPE_NUMBER_VARIATION_PASSWORD;
-//            et_tel_num.setInputType(inputType);
-//            et_password.setInputType(inputType);
-//            et_newpassword.setInputType(inputType);
-            setTitle("修改支付密码");
-            url= Define.URL_updata_pay_pwd;
-        }
-        bt_updatepassword.setOnClickListener(new View.OnClickListener() {//完成修改密码
-            @Override
-            public void onClick(View view) {
-
-                upData(url);
-
-            }
-        });
-        //支付密码6位数字监听
-        setListener();
+    public void initView() {
     }
-    private void setListener() {
+
+    @Override
+    public void initData() {
+        setTitle("修改密码");
+
+//        if (getIntent().getStringExtra("type").equals("1")){//修改登录密码
+//            setTitle("修改密码");
+////            url= Define.URL_updata_login_pwd;
+//        }else if (getIntent().getStringExtra("type").equals("2")){//修改支付密码
+////            int inputType = InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_VARIATION_NORMAL|InputType.TYPE_NUMBER_VARIATION_PASSWORD;
+////            et_tel_num.setInputType(inputType);
+////            et_password.setInputType(inputType);
+////            et_newpassword.setInputType(inputType);
+//            setTitle("修改支付密码");
+//        }
+//
+//        //完成修改密码
+//        bt_updatepassword.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                upData();
+//            }
+//        });
+//        //支付密码6位数字监听
+////        setListener();
+    }
+
+    @Override
+    public void initListener() {
 //        if (getIntent().getStringExtra("type").equals("2")){
 //            et_tel_num.addTextChangedListener(new TextWatcher() {
 //                @Override
@@ -114,33 +117,40 @@ public class UpdataPwdActivity extends Base1Activity {
 //                    }
 //                }
 //            });
-            et_newpassword.addTextChangedListener(new TextWatcher() {
-                @Override
-                public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+        et_newpassword.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                if (editable.length()>0&&!editable.toString().contains(" ")){
+                    bt_update_password.setAlpha(1);
+                }else{
+                    bt_update_password.setAlpha((float) 0.5);
                 }
-
-                @Override
-                public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-                }
-
-                @Override
-                public void afterTextChanged(Editable editable) {
-                    if (editable.length()>0&&!editable.toString().contains(" ")){
-                        bt_updatepassword.setAlpha(1);
-                    }else{
-                        bt_updatepassword.setAlpha((float) 0.5);
-                    }
-                }
-            });
-
-        }
+            }
+        });
 
 
+        bt_update_password.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                completeModifyPassword();
+            }
+        });
 
-    private void upData(String url) {
-        if (TextUtils.isEmpty(et_tel_num.getText().toString()) || TextUtils.isEmpty(et_password.getText().toString()) || TextUtils.isEmpty(et_newpassword.getText().toString())){
+    }
+
+    private void completeModifyPassword() {
+        if (TextUtils.isEmpty(et_tel_num.getText().toString()) || TextUtils.isEmpty(et_password.getText().toString())
+                || TextUtils.isEmpty(et_newpassword.getText().toString())){
             MyApplication.showToast("修改信息不能为空");
             return;
         }
@@ -148,23 +158,36 @@ public class UpdataPwdActivity extends Base1Activity {
             MyApplication.showToast("两次输入密码不一致");
             return;
         }
-        MyParams params=new MyParams();
-        if (getIntent().getStringExtra("type").equals("2")){
-            params.put("uniqid", SharedPreferencesHelper.getInstance().getString(SpContact.UNIQID));
-        }
-//        params.put("userid", SharedPreferencesHelper.getInstance().getString(AppSpContact.SP_UID));
-//        params.put("imei", SharedPreferencesHelper.getInstance().getString(AppSpContact.SP_DEVICEID));
-//        params.put("formerpwd", FlockUtil.jiami(et_tel_num.getText().toString().trim()));
-//        params.put("newpwd",FlockUtil.jiami(et_password.getText().toString().trim()));
-//        params.put("newpwds",FlockUtil.jiami(et_newpassword.getText().toString().trim()));
-//        VictorHttpUtil.doPost(false,mContext,url,params,true,null,new BaseHttpCallbackListener<Element>(){
-//            @Override
-//            public void callbackSuccess(String url, Element element) {
-//                super.callbackSuccess(url, element);
-//                MyApplication.showToast(element.getMsg());
-//                finish();
-//            }
-//        });
+
+        MyParams params = new MyParams();
+        params.put("app","yes");
+        params.put("uuid", PreferencesUtils.getString(mContext,Constants.USER_UUID));
+        params.put("imei", AppUtil.getPhoneImei(mActivity));
+        params.put("mobile",PreferencesUtils.getString(mContext,Constants.USER_PHONE));
+        params.put("password",et_tel_num.getText().toString());
+        params.put("newPassword",et_password.getText().toString());
+
+        VictorHttpUtil.doPost(false,mContext,Define.UPDATE_PASSWORD,params,true,null,new BaseHttpCallbackListener<Element>(){
+            @Override
+            public void callbackSuccess(String url, Element element) {
+                super.callbackSuccess(url, element);
+                MyApplication.showToast("修改成功,请重新登录");
+
+                preferencesHelper.putBoolean(Constants.SP_FIRST_LAUCH,false);
+                preferencesHelper.putBoolean(Constants.LOGIN_SUCCESS,false);
+
+                PreferencesUtils.removeAllData(mContext);
+                finish();
+            }
+        });
 
     }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        finish();
+    }
+
+
 }

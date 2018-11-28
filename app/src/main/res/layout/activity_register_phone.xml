@@ -7,7 +7,9 @@
     android:orientation="vertical"
     android:background="#ffffff"
     tools:context="com.tianjistar.help.activity.login.RegisterPhoneActivity">
-<include layout="@layout/top_bar_commom"></include>
+
+    <include layout="@layout/top_bar_commom"/>
+
     <TextView
         android:layout_marginTop="@dimen/dimen_35_dp"
         android:layout_marginRight="@dimen/dimen_24_dp"
@@ -17,6 +19,7 @@
         android:layout_height="wrap_content"
         android:textSize="23sp"
         android:textColor="#251919"/>
+
     <TextView
         android:layout_marginTop="@dimen/dimen_72_dp"
         android:layout_marginRight="@dimen/dimen_24_dp"
@@ -26,6 +29,7 @@
         android:layout_height="wrap_content"
         android:textSize="12sp"
         android:textColor="#251919"/>
+
     <LinearLayout
         android:layout_marginTop="@dimen/dimen_19_dp"
         android:layout_marginRight="@dimen/dimen_24_dp"
@@ -33,17 +37,20 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
+
         <TextView
             android:textSize="16sp"
             android:textColor="#191f25"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="+86"/>
+
         <TextView
             android:layout_marginLeft="@dimen/dimen_15_dp"
             android:background="#ededee"
             android:layout_width="@dimen/dimen_1_dp"
             android:layout_height="@dimen/dimen_16_dp" />
+
         <com.tianjistar.help.widget.ClearEditText
             android:id="@+id/et_phone"
             android:background="@null"
@@ -57,35 +64,40 @@
             android:textColor="@color/login_see"
             android:textColorHint="@color/login_hint"
             android:textSize="16sp"/>
+
     </LinearLayout>
+
     <TextView
         android:layout_marginRight="@dimen/dimen_24_dp"
         android:layout_marginLeft="@dimen/dimen_24_dp"
         android:background="#ededee"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dimen_1_dp" />
+
     <Button
         android:id="@+id/btn_next"
         android:textSize="20sp"
         android:textColor="#ffffff"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
         android:text="下一步"
         android:alpha="0.5"
         android:layout_marginRight="@dimen/dimen_24_dp"
         android:layout_marginLeft="@dimen/dimen_24_dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="16dp"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
         android:background="@drawable/add_card_next"/>
+
     <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:layout_gravity="center_horizontal"
         android:paddingTop="@dimen/dimen_18_dp"
         android:text="点击【下一步】即表示您同意协议："
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:textSize="12sp"
         android:textColor="#251919"/>
+
     <TextView
         android:id="@+id/tv_xieyi"
         android:gravity="center_horizontal"
@@ -97,4 +109,5 @@
         android:layout_height="wrap_content"
         android:textSize="12sp"
         android:textColor="#f02b2b"/>
+
 </LinearLayout>

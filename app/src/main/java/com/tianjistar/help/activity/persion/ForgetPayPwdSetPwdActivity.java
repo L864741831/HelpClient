@@ -1,6 +1,5 @@
 package com.tianjistar.help.activity.persion;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -29,8 +28,7 @@ public class ForgetPayPwdSetPwdActivity extends Base1Activity {
     }
 
     @Override
-    protected void initView() {
-        super.initView();
+    public void initView() {
         setTitle("设置支付密码");
         buttonNect.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,6 +44,17 @@ public class ForgetPayPwdSetPwdActivity extends Base1Activity {
             }
         });
     }
+
+    @Override
+    public void initData() {
+
+    }
+
+    @Override
+    public void initListener() {
+
+    }
+
     //接收设置页面发送的广播关闭当前页面
     @Subscribe(priority = 1,threadMode = ThreadMode.MAIN)
     public void onReceiveAccount(String type){

@@ -38,7 +38,7 @@ public class StringUtils {
      * @return if string is null or its size is 0 or it is made by space, return true, else return false.
      */
     public static boolean isBlank(String str) {
-        return (str == null || str.trim().length() == 0);
+        return (str == null || str.trim().length() == 0 || str == "");
     }
 
     public static boolean isNotBlank(String str) {

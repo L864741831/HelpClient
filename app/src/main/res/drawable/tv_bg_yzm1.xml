@@ -2,8 +2,8 @@
 <!-- 项目中白底红字按钮通用的selector样式 -->
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <corners android:radius="2dp"/>
-    <solid android:color="#ffffff"></solid>
+    <corners android:radius="3dp"/>
+    <solid android:color="#ffffff"/>
     <stroke android:width="0.5dp" android:color="#a3a5a8"/>
 
 

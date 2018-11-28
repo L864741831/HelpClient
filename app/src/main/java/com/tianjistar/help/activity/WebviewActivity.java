@@ -11,7 +11,6 @@ import android.webkit.WebViewClient;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 
-
 import com.tianjistar.help.R;
 import com.tianjistar.help.app.JavaScriptObject;
 import com.tianjistar.help.base.Base1Activity;
@@ -42,8 +41,7 @@ public class WebviewActivity extends Base1Activity {
     }
 
     @Override
-    protected void initView() {
-        super.initView();
+    public void initView() {
 //        mWebview.requestFocus();
         //隐藏滚动条
         // mWebview.setScrollBarStyle(style);
@@ -143,6 +141,16 @@ public class WebviewActivity extends Base1Activity {
         }
 
         mWebview.loadUrl(mUrl);
+    }
+
+    @Override
+    public void initData() {
+
+    }
+
+    @Override
+    public void initListener() {
+
     }
 
     @Override

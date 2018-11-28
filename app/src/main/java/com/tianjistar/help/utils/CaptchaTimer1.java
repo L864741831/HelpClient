@@ -28,7 +28,7 @@ public class CaptchaTimer1 extends CountDownTimer {
     }
 
     public void onFinish() {
-        btn_get_captcha.setTextColor(Color.parseColor("#f02b2b"));
+        btn_get_captcha.setTextColor(Color.parseColor("#000000"));
         btn_get_captcha.setText("重发验证码");
         btn_get_captcha.setEnabled(true);
     }
@@ -37,7 +37,7 @@ public class CaptchaTimer1 extends CountDownTimer {
         //strategy1是一个TextView
         String texts = "00:"+millisUntilFinished / 1000L + "秒后重发验证码";//45s后再次获取
         btn_get_captcha.setText(texts);
-        btn_get_captcha.setTextColor(Color.parseColor("#a3a5a8"));
+        btn_get_captcha.setTextColor(Color.parseColor("#000000"));
 //        btn_get_captcha.setBackgroundResource(R.drawable.tv_bg_yzm1);
         SpannableStringBuilder builder1 = new SpannableStringBuilder(btn_get_captcha.getText().toString());
         //设置前景色为蓝色

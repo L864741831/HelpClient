@@ -25,6 +25,7 @@ public class MyOverLay extends PoiOverlay {
         super(baiduMap);
         this.poiSearch = poiSearch;
     }
+
     /**
      * 覆盖物被点击时
      */

@@ -1,11 +1,8 @@
 package com.tianjistar.help.utils;
 
-
-
-import com.tianjistar.help.app.AppSpContact;
+import com.tianjistar.help.app.Constants;
 
 import java.io.File;
-
 
 /**
  * Author:    ZhuWenWu
@@ -56,17 +53,17 @@ public class FileHelper {
     }
 
     public static String getAppPath() {
-        return checkAndMkdirs(AppSpContact.FILE_DATA_ROOT_PATH);
+        return checkAndMkdirs(Constants.FILE_DATA_ROOT_PATH);
     }
 
     public static String getAvatarDir() {
-        return checkAndMkdirs(AppSpContact.FILE_DATA_AVATAR_PATH);
+        return checkAndMkdirs(Constants.FILE_DATA_AVATAR_PATH);
     }
 
     public static String getPicturePath() {
-        return checkAndMkdirs(AppSpContact.FILE_DATA_PICTURE_PATH);
+        return checkAndMkdirs(Constants.FILE_DATA_PICTURE_PATH);
     }
     public static String getAudioPath() {
-        return checkAndMkdirs(AppSpContact.FILE_DATA_AUDIO_PATH);
+        return checkAndMkdirs(Constants.FILE_DATA_AUDIO_PATH);
     }
 }

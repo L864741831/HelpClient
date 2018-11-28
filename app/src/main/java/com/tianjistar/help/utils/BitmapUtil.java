@@ -11,8 +11,7 @@ import android.os.Build;
 import android.provider.MediaStore;
 import android.text.TextUtils;
 
-
-import com.tianjistar.help.app.AppSpContact;
+import com.tianjistar.help.app.Constants;
 
 import java.io.BufferedOutputStream;
 import java.io.ByteArrayInputStream;
@@ -98,7 +97,7 @@ public class BitmapUtil {
             ToastUtils.show(context, "保存出错了...");
             return null;
         }
-        File dirFile = new File(AppSpContact.ROOT_FILE, "/SaveImage");
+        File dirFile = new File(Constants.ROOT_FILE, "/SaveImage");
         if (!dirFile.exists()) {
             dirFile.mkdirs();
         }
@@ -307,7 +306,7 @@ public class BitmapUtil {
     }
 
     public static File getFiles() {
-        File file = new File(AppSpContact.ROOT_FILE, "/temp/.nomedia/" + System.currentTimeMillis() + ".jpg");
+        File file = new File(Constants.ROOT_FILE, "/temp/.nomedia/" + System.currentTimeMillis() + ".jpg");
         if (!file.getParentFile().exists())
             file.getParentFile().mkdirs();
         return file;

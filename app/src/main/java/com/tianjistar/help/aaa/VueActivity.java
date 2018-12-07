@@ -116,9 +116,13 @@ public class VueActivity extends Base1Activity implements View.OnClickListener {
 
     //http://ty.tianjistar.com  //正式
 
-/*    String mUrl = "http://ty.tianjistar.com/mobile/#/user/home";*/
+    String mUrl = "http://ty.tianjistar.com/mobile/#/user/home";
 
-    String mUrl = "http://172.18.1.79:8080/#/user/home";
+/*    String mUrl = "http://172.18.1.79:8080";*/
+
+/*    String mUrl = "http://172.18.1.79:8080/#/user/home";*/
+
+/*    String mUrl = "https://www.baidu.com/";*/
 
     private LocationClient mLocClient;
     //纬度
@@ -272,6 +276,8 @@ public class VueActivity extends Base1Activity implements View.OnClickListener {
         webSettings.setGeolocationDatabasePath(dir);
         //启用地理定位
         webSettings.setGeolocationEnabled(true);
+
+
 
 
 
@@ -756,14 +762,9 @@ public class VueActivity extends Base1Activity implements View.OnClickListener {
             //获取定位精度，默认值为0.0f
             mCurrentAccracy = location.getRadius();
 
-            Log.i("weizhi", "123??" + mCurrentLat + "\n" + mCurrentLon);
+            //Log.i("weizhi", "123??" + mCurrentLat + "\n" + mCurrentLon);
 
-            // 只需要将第一种方法的loadUrl()换成下面该方法即可
-            mWebview.evaluateJavascript("javascript:upDetaGeography("+mCurrentLon+","+mCurrentLat+")", new ValueCallback<String>() {
-                @Override
-                public void onReceiveValue(String value) {                            //此处为 js 返回的结果
-                }
-            });
+
 
             //Toast.makeText(VueActivity.this,""+mCurrentLat + "\n" + mCurrentLon,Toast.LENGTH_SHORT).show();
 
@@ -774,6 +775,13 @@ public class VueActivity extends Base1Activity implements View.OnClickListener {
 
                 show = true;
             }
+
+            // 只需要将第一种方法的loadUrl()换成下面该方法即可
+            mWebview.evaluateJavascript("javascript:upDetaGeography("+mCurrentLon+","+mCurrentLat+")", new ValueCallback<String>() {
+                @Override
+                public void onReceiveValue(String value) {                            //此处为 js 返回的结果
+                }
+            });
 
 
         }

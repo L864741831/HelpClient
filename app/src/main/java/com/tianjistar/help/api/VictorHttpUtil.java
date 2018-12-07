@@ -77,7 +77,13 @@ public class VictorHttpUtil {
         String imei= SharedPreferencesHelper.getInstance().getString(Constants.SP_DEVICEID);
         long timestamp = System.currentTimeMillis() / 1000;// 获取时间戳（单位：秒）
         GetRequest request;
+
         String signUrl = _genSignUrl(url, timestamp, params);// 变换url
+
+
+
+
+
         if (ishead) {
             request = OkGo.get(signUrl)
                     .tag(context)
@@ -143,6 +149,10 @@ public class VictorHttpUtil {
         // 打印请求参数
 //        Logger.e(String.format("url: %s\nparams: %s", url, params));
 
+
+        Log.i("head-request",request.getHeaders().toString());
+
+
         // 发送请求
         request.execute(new ElementCallback(context, url, showProgressDialog, loadingText, callbackListener));
     }
@@ -157,14 +167,25 @@ public class VictorHttpUtil {
             }
             return;
         }
+
+
         long timestamp = System.currentTimeMillis() / 1000;// 获取时间戳（单位：秒）
+
         String signUrl = _genSignUrl(url, timestamp, params);// 变换url
-        PostRequest   request = OkGo.post(signUrl)
+
+        Log.i("signUrl","---signUrl---"+signUrl);
+
+
+        PostRequest  request = OkGo.post(signUrl)
                 .tag(context);
         // 添加请求参数
         _addReqParams(params, request);
 
         Log.i("info",url+"---params---"+params);
+
+
+        Log.i("head-request-two",request.getHeaders().toString());
+
 
         // 打印请求参数
 //        Logger.e(String.format("url: %s\nparams: %s", url, params));
@@ -351,6 +372,10 @@ public class VictorHttpUtil {
          */
         @Override
         public void onSuccess(Element element, Call call, Response response) {
+
+            LogUtil.i("head-response-there",response.headers().toString()+"\n");//打印返回数据
+
+
             if (element == null) {
                 showToast("解析JSON数据为空，请检查！！！");
                 return;
@@ -466,6 +491,9 @@ public class VictorHttpUtil {
             String str = response.body().string();
 
             LogUtil.i("info","---str---"+str);//打印返回数据
+
+            LogUtil.i("head-response",response.headers().toString()+"\n");//打印返回数据
+
 
 //            MyLogger.json(str);
             return JSON.parseObject(str, Element.class);

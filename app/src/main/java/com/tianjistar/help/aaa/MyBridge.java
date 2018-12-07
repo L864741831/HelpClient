@@ -22,9 +22,13 @@ import com.tianjistar.help.utils.ToastUtils;
 
 import java.net.URISyntaxException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
+import cn.sharesdk.framework.Platform;
+import cn.sharesdk.framework.PlatformActionListener;
 import cn.sharesdk.onekeyshare.OnekeyShare;
+import cn.sharesdk.onekeyshare.OnekeyShareThemeImpl;
 
 /**
  * Created by zitan on 2018/5/2.
@@ -90,7 +94,7 @@ public class MyBridge {
     }*/
 
 
-    private void showShare(String title, String content, String icon_url, String img_url) {
+    private void showShare(String title, final String content, String icon_url, String img_url) {
         OnekeyShare oks = new OnekeyShare();
         //关闭sso授权
         oks.disableSSOWhenAuthorize();
@@ -108,7 +112,7 @@ public class MyBridge {
         oks.setText(content);
 
         // imagePath是图片的本地路径，Linked-In以外的平台都支持此参数
-        //oks.setImagePath("/sdcard/test.jpg");//确保SDcard下面存在此张图片
+        oks.setImagePath("/sdcard/test.jpg");//确保SDcard下面存在此张图片
 
         //oks.setImageUrl("https://mmbiz.qlogo.cn/mmbiz_png/v4xOHcWSBxgbXKnibttdDzcrpEHfBZW1JKLyz2fDJFUdeHMgtbNjogEp7uibe0wtIibS9XsiaTTa0R8wvVibP0ibFibmQ/0?wx_fmt=png");
 
@@ -131,12 +135,51 @@ public class MyBridge {
         // siteUrl是分享此内容的网站地址，仅在QQ空间使用
         oks.setSiteUrl("http://sharesdk.cn");*/
 
+
+
+/*        oks.setCallback(new PlatformActionListener() {
+            @Override
+            public void onComplete(Platform platform, int i, HashMap<String, Object> hashMap) {
+                Toast.makeText(context, "分享完成", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onError(Platform platform, int i, Throwable throwable) {
+                Toast.makeText(context, "分享错误", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onCancel(Platform platform, int i) {
+                Toast.makeText(context, "取消分享", Toast.LENGTH_SHORT).show();
+            }
+        });*/
+
+
+        oks.setCallback(new OnekeyShareThemeImpl() {
+            @Override
+            protected void showPlatformPage(Context context) {
+/*                Toast.makeText(context, "showPlatformPage", Toast.LENGTH_SHORT).show();*/
+            }
+
+            @Override
+            protected void showEditPage(Context context, Platform platform, Platform.ShareParams shareParams) {
+/*                Toast.makeText(context, "showEditPage", Toast.LENGTH_SHORT).show();*/
+            }
+        });
+
+
+
 // 启动分享GUI
         oks.show(context);
 
         /*
         showShare(title,content,icon_url,img_url);
 */
+
+
+
+
+
     }
 
 

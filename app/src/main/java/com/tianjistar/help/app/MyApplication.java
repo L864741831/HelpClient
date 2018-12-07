@@ -42,7 +42,6 @@ public class MyApplication extends BaseApplication {
         SDKInitializer.initialize(getApplicationContext());
 
 
-
         //shareSDK分享
         MobSDK.init(this);
 

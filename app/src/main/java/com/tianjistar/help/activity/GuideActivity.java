@@ -91,12 +91,12 @@ public class GuideActivity extends Base1Activity {
         final Intent intent;
         //判断是否是登陆过
         if (SharedPreferencesHelper.getInstance().getBoolean(Constants.SP_FIRST_LAUCH) == true) {
-            intent = new Intent(this, MainActivity.class);
-/*            intent = new Intent(this, VueActivity.class);*/
+/*            intent = new Intent(this, MainActivity.class);*/
+            intent = new Intent(this, VueActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         } else {
-            intent = new Intent(this, MainActivity.class);
-/*            intent = new Intent(this, VueActivity.class);*/
+/*            intent = new Intent(this, MainActivity.class);*/
+            intent = new Intent(this, VueActivity.class);
             intent.putExtra(Constants.JUMP_LOGIN, "register");
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         }

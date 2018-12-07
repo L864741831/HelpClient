@@ -73,7 +73,18 @@ MobSDK {
             Wechat {
                 appId "wxa00b7e79535f5253"
                 appSecret "64020361b8ec4c99936c0e3999a9f249"
+
+                //AppID:wx0fb777b3a65384ca
+                //AppSecret:f3309e649a03b48374e5d1acd474ba49
+
+                //正式:sha1:9bb0e5363bea202a7b2d03181dea655e
             }
+
+/*            WechatMoments {
+                appId "wxa00b7e79535f5253"
+                appSecret "64020361b8ec4c99936c0e3999a9f249"
+            }*/
+
 
         }
     }
@@ -128,11 +139,12 @@ dependencies {
     compile 'com.ogaclejapan.smarttablayout:library:1.6.1@aar'
     compile 'com.wuxiaolong.pullloadmorerecyclerview:library:1.1.2'
     testCompile 'junit:junit:4.12'
+
     compile files('libs/alipaySdk-20180403.jar')
     compile files('libs/jcore-android-1.2.6.jar')
     compile files('libs/jpush-android-3.1.7.jar')
 
-
+    compile 'com.tencent.mm.opensdk:wechat-sdk-android-without-mta:+'
 
 
 }
